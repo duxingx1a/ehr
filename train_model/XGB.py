@@ -5,20 +5,21 @@ import utils
 import pickle
 
 def init_xgb():
-    model_xgb = xgb.XGBClassifier(learning_rate=0.05,
-                                  n_estimators=300,
-                                  max_depth=5,
-                                  min_child_weight=2,
-                                  gamma=0.2,
-                                  subsample=0.8,
-                                  colsample_bytree=1,
-                                  objective='binary:logistic',
-                                  nthread=-1,
-                                  scale_pos_weight=10,
-                                  seed=42,
-                                  reg_alpha=0,
-                                  reg_lambda=1,
-                                  eval_metric='auc')
+    # model_xgb = xgb.XGBClassifier(learning_rate=0.05,
+    #                               n_estimators=300,
+    #                               max_depth=5,
+    #                               min_child_weight=2,
+    #                               gamma=0.2,
+    #                               subsample=0.8,
+    #                               colsample_bytree=1,
+    #                               objective='binary:logistic',
+    #                               nthread=-1,
+    #                               scale_pos_weight=10,
+    #                               seed=42,
+    #                               reg_alpha=0,
+    #                               reg_lambda=1,
+    #                               eval_metric='auc')
+    model_xgb = xgb.XGBClassifier(nthread=-1,device='gpu')
     return model_xgb
 
 def train_xgb():

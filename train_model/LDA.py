@@ -6,9 +6,10 @@ import pickle
 
 
 def init_lda():
-    model_lda = LinearDiscriminantAnalysis(solver='lsqr',
-                                           shrinkage='auto',
-                                           priors=None)
+    # model_lda = LinearDiscriminantAnalysis(solver='lsqr',
+    #                                        shrinkage='auto',
+    #                                        priors=None)
+    model_lda = LinearDiscriminantAnalysis()
     return model_lda
 
 

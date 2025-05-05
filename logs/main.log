@@ -1,0 +1,10 @@
+[ 2025-05-05 20:13:47 - INFO - train_ml_models.py:71 ] - ['Cystatin-C', 'Creatinine', 'Serum_Uric_acid', 'Serum_Urea', 'Uric_RBC', 'Uric_WBC', 'Uric_PH', 'Uric_specific_gravity', 'Uric_conductivity', 'Uric_epithelium', 'Uric_bacteria', 'RBC', 'RDW(SD)', 'RDW(CV)', 'HCT', 'MCHC', 'MCH', 'MCV', 'HB', 'WBC', 'Neutrophil_count', 'Neutrophil_percentage', 'Lymphocytes_count', 'Lymphocytes_percentage', 'Basophil_count', 'Basophil_percentage', 'Eosinophil_count', 'Eosinophil_percentage', 'Monocytes_count', 'Monocytes_percentage', 'platelets_count', 'AST', 'ALT', 'AST_to_ALT_ratio', 'DBIL', 'IBIL', 'TBIL', 'Globulin', 'Total_protein', 'Albumin', 'ALB_to_GLO_ratio', 'CK', 'AKP', 'GGT', 'α-HBDH', 'LDH', 'Fasting_blood_glucose', 'Cholesterol', 'Triglycerides', 'HDL', 'LDL', 'Systolic_BP', 'Diastolic_BP', 'BMI', 'Height', 'Weight', 'Waistline', 'Hips', 'Waist_to_hip_ratio', 'Smoke', 'Alcohol', 'Gender', 'Age', 'eGFR', 'NLR', 'HLSI', 'MSS', 'URSI', 'PHB', 'BAOI', 'BRI', 'ABSI']
+[ 2025-05-05 20:15:01 - ERROR - custom_log.py:45 ] - Uncaught exception
+Traceback (most recent call last):
+  File "c:\Users\ydl\Desktop\ehr\train_ml_models.py", line 155, in <module>
+    main()
+  File "c:\Users\ydl\Desktop\ehr\train_ml_models.py", line 73, in main
+    trained_models = train_model(models_set, models_names_set, X_train, X_test,
+  File "c:\Users\ydl\Desktop\ehr\train_ml_models.py", line 57, in train_model
+    with open(f'models/{name}_{current_time}_{acc * 100:.2f}%.pkl', 'wb') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'models/model_adb_05-05_2015_90.20%.pkl'

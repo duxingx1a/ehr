@@ -7,14 +7,19 @@ import utils
 import pickle
 # 忽略ConvergenceWarning
 warnings.filterwarnings('ignore', category=ConvergenceWarning)
+
+
 def init_lr():
-    model_lr = LogisticRegression(max_iter=1000,
-                                  random_state=42,
-                                  solver='lbfgs',
-                                  penalty='l2',
-                                  C=1.0,
-                                  )
+    # model_lr = LogisticRegression(
+    #     max_iter=1000,
+    #     random_state=42,
+    #     solver='lbfgs',
+    #     penalty='l2',
+    #     C=1.0,
+    # )
+    model_lr = LogisticRegression(n_jobs=-1)
     return model_lr
+
 
 def train_lr():
     df = pd.read_excel("../data/all_data.xlsx")
@@ -34,6 +39,7 @@ def train_lr():
     with open(f'../models/LR_{current_time}_{acc * 100:.2f}%.pkl', 'wb') as f:
         pickle.dump(model_lr, f)
     return model_lr, X_test, Y_test
+
 
 if __name__ == '__main__':
     train_lr()

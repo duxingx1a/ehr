@@ -6,10 +6,11 @@ import pickle
 
 
 def init_gb():
-    model_gb = GradientBoostingClassifier(n_estimators=100,
-                                          learning_rate=0.1,
-                                          max_depth=3,
-                                          random_state=42)
+    # model_gb = GradientBoostingClassifier(n_estimators=100,
+    #                                       learning_rate=0.1,
+    #                                       max_depth=3,
+    #                                       random_state=42)
+    model_gb = GradientBoostingClassifier()
     return model_gb
 
 

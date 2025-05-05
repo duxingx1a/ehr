@@ -6,9 +6,10 @@ import pickle
 
 
 def init_adb():
-    model_adaboost = AdaBoostClassifier(n_estimators=100,
-                                        learning_rate=1.0,
-                                        random_state=42)
+    # model_adaboost = AdaBoostClassifier(n_estimators=100,
+    #                                     learning_rate=1.0,
+    #                                     random_state=42)
+    model_adaboost = AdaBoostClassifier()
     return model_adaboost
 
 

@@ -6,23 +6,24 @@ import utils
 
 
 def init_lgbm():
-    model_lgbm = LGBMClassifier(
-        boosting_type='gbdt',
-        num_leaves=31,
-        max_depth=30,
-        learning_rate=0.1,
-        n_estimators=300,
-        objective='binary',  # 默认是二分类
-        min_split_gain=0.0,
-        min_child_samples=20,
-        subsample=0.8,
-        subsample_freq=0,
-        colsample_bytree=1.0,
-        reg_alpha=1,
-        reg_lambda=1,
-        random_state=0,
-        verbosity=-1
-    )
+    # model_lgbm = LGBMClassifier(
+    #     boosting_type='gbdt',
+    #     num_leaves=31,
+    #     max_depth=30,
+    #     learning_rate=0.1,
+    #     n_estimators=300,
+    #     objective='binary',  # 默认是二分类
+    #     min_split_gain=0.0,
+    #     min_child_samples=20,
+    #     subsample=0.8,
+    #     subsample_freq=0,
+    #     colsample_bytree=1.0,
+    #     reg_alpha=1,
+    #     reg_lambda=1,
+    #     random_state=0,
+    #     verbosity=-1
+    # )
+    model_lgbm = LGBMClassifier(verbosity=2, n_jobs=-1)
     return model_lgbm
 
 

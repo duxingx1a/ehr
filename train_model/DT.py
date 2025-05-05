@@ -4,22 +4,27 @@ from sklearn.tree import DecisionTreeClassifier
 import utils
 import pickle
 
+
 def init_dt():
-    model_dt = DecisionTreeClassifier(criterion="gini",
-                                      splitter="best",
-                                      max_depth=20,
-                                      min_samples_split=4,
-                                      min_samples_leaf=2,
-                                      min_weight_fraction_leaf=0.,
-                                      max_features=None,
-                                      random_state=None,
-                                      max_leaf_nodes=None,
-                                      min_impurity_decrease=0.,
-                                      # min_impurity_split=None,
-                                      class_weight=None,
-                                      # presort='deprecated',
-                                      ccp_alpha=0.0)
+    # model_dt = DecisionTreeClassifier(
+    #     criterion="gini",
+    #     splitter="best",
+    #     max_depth=20,
+    #     min_samples_split=4,
+    #     min_samples_leaf=2,
+    #     min_weight_fraction_leaf=0.,
+    #     max_features=None,
+    #     random_state=None,
+    #     max_leaf_nodes=None,
+    #     min_impurity_decrease=0.,
+    #     # min_impurity_split=None,
+    #     class_weight=None,
+    #     # presort='deprecated',
+    #     ccp_alpha=0.0)
+    model_dt = DecisionTreeClassifier()
     return model_dt
+
+
 def train_decision_tree():
     df = pd.read_excel("../data/all_data.xlsx")
     # df = pd.read_excel("../data/demo_data.xlsx")

@@ -6,11 +6,12 @@ import pickle
 
 
 def init_rf():
-    model_rf = RandomForestClassifier(n_estimators=300,
-                                      oob_score=True,
-                                      max_depth=30,
-                                      n_jobs=8,
-                                      random_state=42)
+    # model_rf = RandomForestClassifier(n_estimators=300,
+    #                                   oob_score=True,
+    #                                   max_depth=30,
+    #                                   n_jobs=8,
+    #                                   random_state=42)
+    model_rf = RandomForestClassifier(n_jobs=-1,)
     return model_rf
 
 
