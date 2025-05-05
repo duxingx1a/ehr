@@ -46,6 +46,10 @@ def init_models():
 
 
 def train_model(models, names, X_train, X_test, Y_train, Y_test, feature_names):
+    #清空之前的模型
+    if os.path.exists('models'):
+        for file in os.listdir('models'):
+            os.remove(os.path.join('models', file))
     for model, name in tqdm(zip(models, names)):
         # 主要是为了绑定特征名
         X_train = pd.DataFrame(X_train, columns=feature_names)
@@ -67,7 +71,7 @@ def metrics():
 
 
 def main():
-    df = pd.read_csv("./data/Train-test-dataset_Ver3_drop.csv")
+    df = pd.read_csv("./data/Train-test-dataset_Ver3_mean_mode.csv")
     X_train, X_test, Y_train, Y_test = utils.get_data(df)
     feature_names = X_train.columns
     feature_names = list(feature_names)
@@ -151,6 +155,7 @@ def main():
     ax[1].set_ylabel('Precision')
     ax[1].legend(loc='lower left')
     plt.tight_layout()
+    plt.savefig('./result_mean.png')
     plt.show()
 
 

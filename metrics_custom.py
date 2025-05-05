@@ -116,7 +116,7 @@ def save_to_excel(metrics_list, filename):
 
 def main():
     models_names_list = ("AdaBoost", "DecisionTree", "GradientBoosting", "GaussianNB", "LinearDiscriminantAnalysis",
-                         "LightGBM", "LogisticRegression", "MultilayerPerceptron", "RandomForest", "SVM", "XGBoost")
+                         "LightGBM", "LogisticRegression", "MultilayerPerceptron", "RandomForest", "XGBoost")
     models_path = 'models/'
     models_list = []
     # 遍历models文件夹中的所有文件
@@ -131,9 +131,10 @@ def main():
                     models_list.append(model)
             except Exception as e:
                 print(f"Error loading model from {filepath}: {e}")
+    print("模型数量:", len(models_list))
     if len(models_list) != len(models_names_list):
         print("模型数量不对")
-    df = pd.read_excel("./data/all_data.xlsx")
+    df = pd.read_csv("data/Train-test-dataset_Ver3_mean_mode.csv")
     # df = pd.read_excel("./data/demo_data.xlsx")
     _, X_test, _, Y_test = utils.get_data(df)
     metrics_list = []
@@ -144,7 +145,7 @@ def main():
         print("模型:", models_names_list[i], "指标计算完成")
 
     # 保存结果到Excel文件
-    save_to_excel(metrics_list, 'metrics.xlsx')
+    save_to_excel(metrics_list, 'metrics_mean.xlsx')
 
 
 if __name__ == '__main__':

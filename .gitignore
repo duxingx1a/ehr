@@ -12,6 +12,7 @@ __pycache__/
 # 本地测试数据
 *.csv
 *.json
-
+*.model
+models/
 # Jupyter Notebook检查点
 .ipynb_checkpoints/
