@@ -57,7 +57,7 @@ def clean_data(df, method='mean', fill_value=None):
 
     # 方法四：随机森林模型填充缺失值
     elif method == 'random_forest':
-        estimator_rf = RandomForestRegressor(n_estimators=100, random_state=0)
+        estimator_rf = RandomForestRegressor(n_estimators=100, random_state=0,n_jobs=-1)
         imputer_rf = IterativeImputer(estimator=estimator_rf, random_state=0, max_iter=10,verbose=2)
         df_clean = pd.DataFrame(imputer_rf.fit_transform(df_clean), columns=df_clean.columns)
 
