@@ -1,4 +1,3 @@
-import logging
 import sys
 
 import pandas as pd
@@ -9,26 +8,20 @@ from datetime import datetime
 import utils
 
 from XGB import XGBClassifier
-
-# 配置日志记录器 记录超参数
-logging.basicConfig(filename='logs/grid_search.log', level=logging.INFO,
-                    format='%(asctime)s - %(levelname)s - %(message)s')
-
-# 创建一个捕获标准输出的处理程序
-stdout_handler = logging.StreamHandler(sys.stdout)
-stdout_handler.setLevel(logging.INFO)
-stdout_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
-
-# 将处理程序添加到日志记录器
-logging.getLogger().addHandler(stdout_handler)
-
+import custom_log
+logger = custom_log.setup_logging("grid_search")
 
 def grid_search(X_train, y_train, param_grid, model, name):
     # 创建GridSearchCV对象
-    grid_search = GridSearchCV(estimator=model, param_grid=param_grid, cv=3, scoring='accuracy', n_jobs=6, verbose=5)
+    grid_search = GridSearchCV(estimator=model,
+                               param_grid=param_grid,
+                               cv=3,
+                               scoring='accuracy',
+                               n_jobs=6,
+                               verbose=5)
     grid_search.fit(X_train, y_train)
-    logging.info(f"{name}Best parameters found: {grid_search.best_params_}")
-    logging.info(f"{name}Best accuracy found: {grid_search.best_score_}")
+    logger.info(f"{name}Best parameters found: {grid_search.best_params_}")
+    logger.info(f"{name}Best accuracy found: {grid_search.best_score_}")
     return grid_search.best_params_
 
 
@@ -37,7 +30,7 @@ def Xgbsearch(X_train, y_train):
     param_grid = {
         'max_depth': [15, 20, 25, 30],
         'learning_rate': [0.1, 0.2, 0.3],
-        'n_estimators': [100,  200, 300],
+        'n_estimators': [100, 200, 300],
         'gamma': [0.25, 0.3],
     }
     # 创建XGBoost分类器

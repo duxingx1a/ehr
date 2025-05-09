@@ -15,14 +15,14 @@ def get_all_dataset():
     """
     
     ## 手动
-    # dataset_paths = [
-    #     "data/Train-test-dataset_Ver3.csv",
-    #     "data/Train-test-dataset_Ver4.csv",
-    #     "data/Train-test-dataset_Ver4_process.csv",
-    #     "data/Train-test-dataset_Ver4_process.csv_drop.csv"
-    # ]
-    #自动
-    dataset_paths = [os.path.join("data", f) for f in os.listdir("data") if f.endswith(".csv")]
+    dataset_paths = [
+        "data/Train-test-dataset_Ver4_drop.csv",
+        "data/Train-test-dataset_Ver4_iterative.csv",
+        "data/Train-test-dataset_Ver4_mean_mode.csv",
+        "data/Train-test-dataset_Ver4_median_mode.csv"
+    ]
+    #自动读取data目录下所有数据文件
+    # dataset_paths = [os.path.join("data", f) for f in os.listdir("data") if f.endswith(".csv")]
     return dataset_paths
 
 def get_train_test_data(df=None,

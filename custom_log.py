@@ -45,7 +45,8 @@ def setup_logging(name="main"):
         logger.error("Uncaught exception", exc_info=(exc_type, exc_value, exc_traceback))
 
     sys.excepthook = handle_exception
-
+    logger.info("\n\n\n-----")#空几行用于区分不同的运行
+    logger.info("Logging setup complete.")
     return logger
 
 

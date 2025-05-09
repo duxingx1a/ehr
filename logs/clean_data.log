@@ -1,0 +1,46 @@
+[ 2025-05-07 13:48:33 - INFO - clean_data.py:79 ] - ✅ 已保存：删除缺失值行的数据
+[ 2025-05-07 13:48:33 - INFO - clean_data.py:80 ] - 删除缺失值行的数据已保存，耗时：9.85秒
+[ 2025-05-07 13:48:33 - ERROR - custom_log.py:45 ] - Uncaught exception
+Traceback (most recent call last):
+  File "/home/mclab/ydl/ehr/clean_data.py", line 83, in <module>
+    df_mean_mode = clean_data(df, method='mean')
+  File "/home/mclab/ydl/ehr/clean_data.py", line 66, in clean_data
+    df_clean[target_column] = y
+IndexError: only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+[ 2025-05-07 13:49:50 - INFO - clean_data.py:79 ] - ✅ 已保存：删除缺失值行的数据
+[ 2025-05-07 13:49:50 - INFO - clean_data.py:80 ] - 删除缺失值行的数据已保存，耗时：9.91秒
+[ 2025-05-07 13:49:51 - ERROR - custom_log.py:45 ] - Uncaught exception
+Traceback (most recent call last):
+  File "/home/mclab/ydl/ehr/clean_data.py", line 83, in <module>
+    df_mean_mode = clean_data(df, method='mean')
+  File "/home/mclab/ydl/ehr/clean_data.py", line 66, in clean_data
+    df_clean[target_column] = y
+IndexError: only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+[ 2025-05-07 13:52:08 - INFO - clean_data.py:79 ] - ✅ 已保存：删除缺失值行的数据
+[ 2025-05-07 13:52:08 - INFO - clean_data.py:80 ] - 删除缺失值行的数据已保存，耗时：10.04秒
+[ 2025-05-07 13:52:08 - ERROR - custom_log.py:45 ] - Uncaught exception
+Traceback (most recent call last):
+  File "/home/mclab/ydl/ehr/clean_data.py", line 83, in <module>
+    df_mean_mode = clean_data(df, method='mean')
+  File "/home/mclab/ydl/ehr/clean_data.py", line 66, in clean_data
+    df_clean[target_column] = y
+IndexError: only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+[ 2025-05-07 13:54:46 - INFO - clean_data.py:77 ] - ✅ 已保存：删除缺失值行的数据
+[ 2025-05-07 13:54:46 - INFO - clean_data.py:78 ] - 删除缺失值行的数据已保存，耗时：10.33秒
+[ 2025-05-07 13:55:01 - INFO - clean_data.py:83 ] - ✅ 已保存：均值+众数填充数据
+[ 2025-05-07 13:55:01 - INFO - clean_data.py:84 ] - 均值+众数填充数据已保存，耗时：14.90秒
+[ 2025-05-07 13:55:18 - INFO - clean_data.py:89 ] - ✅ 已保存：中位数+众数填充数据
+[ 2025-05-07 13:55:18 - INFO - clean_data.py:90 ] - 中位数+众数填充数据已保存，耗时：16.87秒
+[ 2025-05-07 14:00:24 - INFO - clean_data.py:89 ] - ✅ 已保存：drop填充数据
+[ 2025-05-07 14:00:24 - INFO - clean_data.py:90 ] - drop填充数据已保存，耗时：10.02秒
+[ 2025-05-07 14:00:39 - INFO - clean_data.py:89 ] - ✅ 已保存：mean填充数据
+[ 2025-05-07 14:00:39 - INFO - clean_data.py:90 ] - mean填充数据已保存，耗时：15.02秒
+[ 2025-05-07 14:00:55 - INFO - clean_data.py:89 ] - ✅ 已保存：median填充数据
+[ 2025-05-07 14:00:55 - INFO - clean_data.py:90 ] - median填充数据已保存，耗时：16.52秒
+[ 2025-05-07 17:40:47 - INFO - custom_log.py:48 ] - 
+
+
+-----
+[ 2025-05-07 17:40:47 - INFO - custom_log.py:49 ] - Logging setup complete.
+[ 2025-05-07 18:04:28 - INFO - clean_data.py:89 ] - ✅ 已保存：iterative填充数据
+[ 2025-05-07 18:04:28 - INFO - clean_data.py:90 ] - iterative填充数据已保存，耗时：1418.92秒

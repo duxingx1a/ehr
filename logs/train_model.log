@@ -1,0 +1,85 @@
+[ 2025-05-07 14:03:43 - INFO - custom_log.py:48 ] - 
+
+
+
+[ 2025-05-07 14:03:43 - INFO - custom_log.py:49 ] - -----
+[ 2025-05-08 09:32:08 - INFO - custom_log.py:48 ] - 
+
+
+-----
+[ 2025-05-08 09:32:08 - INFO - custom_log.py:49 ] - Logging setup complete.
+[ 2025-05-08 09:32:10 - INFO - train_ml_models.py:78 ] - ['ABSI', 'AKP', 'ALB_to_GLO_ratio', 'ALT', 'AST', 'AST_to_ALT_ratio', 'Age', 'Albumin', 'Alcohol', 'BMI', 'BRI', 'Basophil_count', 'Basophil_percentage', 'CK', 'Cholesterol', 'Creatinine', 'Cystatin-C', 'DBIL', 'Diastolic_BP', 'Eosinophil_count', 'Eosinophil_percentage', 'Fasting_blood_glucose', 'GGT', 'Gender', 'Globulin', 'HB', 'HCT', 'HDL', 'Height', 'Hips', 'IBIL', 'LDH', 'LDL', 'Lymphocytes_count', 'Lymphocytes_percentage', 'MCH', 'MCHC', 'MCV', 'Monocytes_count', 'Monocytes_percentage', 'NLR', 'Neutrophil_count', 'Neutrophil_percentage', 'PHR', 'RBC', 'RDW(CV)', 'RDW(SD)', 'Serum_Urea', 'Serum_Uric_acid', 'Smoke', 'Systolic_BP', 'TBIL', 'Total_protein', 'Triglycerides', 'Uric_PH', 'Uric_RBC', 'Uric_WBC', 'Uric_bacteria', 'Uric_conductivity', 'Uric_epithelium', 'Uric_specific_gravity', 'WBC', 'Waist_to_hip_ratio', 'Waistline', 'Weight', 'eGFR', 'platelets_count', 'α-HBDH']
+[ 2025-05-08 10:24:20 - INFO - custom_log.py:48 ] - 
+
+
+-----
+[ 2025-05-08 10:24:20 - INFO - custom_log.py:49 ] - Logging setup complete.
+[ 2025-05-08 10:24:20 - ERROR - custom_log.py:45 ] - Uncaught exception
+Traceback (most recent call last):
+  File "/home/mclab/ydl/ehr/train_ml_models.py", line 168, in <module>
+    main()
+  File "/home/mclab/ydl/ehr/train_ml_models.py", line 79, in main
+    df= pd.read_csv(dataset)
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/pandas/io/parsers/readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/pandas/io/parsers/readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/pandas/io/parsers/readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/pandas/io/parsers/readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/pandas/io/common.py", line 873, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: 'data/Train-test-dataset_Ver4_drop.csv'
+[ 2025-05-08 10:34:08 - INFO - custom_log.py:48 ] - 
+
+
+-----
+[ 2025-05-08 10:34:08 - INFO - custom_log.py:49 ] - Logging setup complete.
+[ 2025-05-08 10:34:09 - ERROR - custom_log.py:45 ] - Uncaught exception
+Traceback (most recent call last):
+  File "/home/mclab/ydl/ehr/train_ml_models.py", line 168, in <module>
+    main()
+  File "/home/mclab/ydl/ehr/train_ml_models.py", line 80, in main
+    X_train, X_test, Y_train, Y_test = utils.get_data(df)
+AttributeError: module 'utils' has no attribute 'get_data'
+[ 2025-05-08 10:36:06 - INFO - custom_log.py:48 ] - 
+
+
+-----
+[ 2025-05-08 10:36:06 - INFO - custom_log.py:49 ] - Logging setup complete.
+[ 2025-05-08 10:36:07 - INFO - train_ml_models.py:83 ] - ['ABSI', 'AKP', 'ALB_to_GLO_ratio', 'ALT', 'AST', 'AST_to_ALT_ratio', 'Age', 'Albumin', 'Alcohol', 'BMI', 'BRI', 'Basophil_count', 'Basophil_percentage', 'CK', 'Cholesterol', 'Creatinine', 'Cystatin-C', 'DBIL', 'Diastolic_BP', 'Eosinophil_count', 'Eosinophil_percentage', 'Fasting_blood_glucose', 'GGT', 'Gender', 'Globulin', 'HB', 'HCT', 'HDL', 'Height', 'Hips', 'IBIL', 'LDH', 'LDL', 'Lymphocytes_count', 'Lymphocytes_percentage', 'MCH', 'MCHC', 'MCV', 'Monocytes_count', 'Monocytes_percentage', 'NLR', 'Neutrophil_count', 'Neutrophil_percentage', 'PHR', 'RBC', 'RDW(CV)', 'RDW(SD)', 'Serum_Urea', 'Serum_Uric_acid', 'Smoke', 'Systolic_BP', 'TBIL', 'Total_protein', 'Triglycerides', 'Uric_PH', 'Uric_RBC', 'Uric_WBC', 'Uric_bacteria', 'Uric_conductivity', 'Uric_epithelium', 'Uric_specific_gravity', 'WBC', 'Waist_to_hip_ratio', 'Waistline', 'Weight', 'eGFR', 'platelets_count', 'α-HBDH']
+[ 2025-05-08 10:43:54 - INFO - train_ml_models.py:83 ] - ['ABSI', 'AKP', 'ALB_to_GLO_ratio', 'ALT', 'AST', 'AST_to_ALT_ratio', 'Age', 'Albumin', 'Alcohol', 'BMI', 'BRI', 'Basophil_count', 'Basophil_percentage', 'CK', 'Cholesterol', 'Creatinine', 'Cystatin-C', 'DBIL', 'Diastolic_BP', 'Eosinophil_count', 'Eosinophil_percentage', 'Fasting_blood_glucose', 'GGT', 'Gender', 'Globulin', 'HB', 'HCT', 'HDL', 'Height', 'Hips', 'IBIL', 'LDH', 'LDL', 'Lymphocytes_count', 'Lymphocytes_percentage', 'MCH', 'MCHC', 'MCV', 'Monocytes_count', 'Monocytes_percentage', 'NLR', 'Neutrophil_count', 'Neutrophil_percentage', 'PHR', 'RBC', 'RDW(CV)', 'RDW(SD)', 'Serum_Urea', 'Serum_Uric_acid', 'Smoke', 'Systolic_BP', 'TBIL', 'Total_protein', 'Triglycerides', 'Uric_PH', 'Uric_RBC', 'Uric_WBC', 'Uric_bacteria', 'Uric_conductivity', 'Uric_epithelium', 'Uric_specific_gravity', 'WBC', 'Waist_to_hip_ratio', 'Waistline', 'Weight', 'eGFR', 'platelets_count', 'α-HBDH']
+[ 2025-05-08 10:53:54 - INFO - train_ml_models.py:83 ] - ['ABSI', 'AKP', 'ALB_to_GLO_ratio', 'ALT', 'AST', 'AST_to_ALT_ratio', 'Age', 'Albumin', 'Alcohol', 'BMI', 'BRI', 'Basophil_count', 'Basophil_percentage', 'CK', 'Cholesterol', 'Creatinine', 'Cystatin-C', 'DBIL', 'Diastolic_BP', 'Eosinophil_count', 'Eosinophil_percentage', 'Fasting_blood_glucose', 'GGT', 'Gender', 'Globulin', 'HB', 'HCT', 'HDL', 'Height', 'Hips', 'IBIL', 'LDH', 'LDL', 'Lymphocytes_count', 'Lymphocytes_percentage', 'MCH', 'MCHC', 'MCV', 'Monocytes_count', 'Monocytes_percentage', 'NLR', 'Neutrophil_count', 'Neutrophil_percentage', 'PHR', 'RBC', 'RDW(CV)', 'RDW(SD)', 'Serum_Urea', 'Serum_Uric_acid', 'Smoke', 'Systolic_BP', 'TBIL', 'Total_protein', 'Triglycerides', 'Uric_PH', 'Uric_RBC', 'Uric_WBC', 'Uric_bacteria', 'Uric_conductivity', 'Uric_epithelium', 'Uric_specific_gravity', 'WBC', 'Waist_to_hip_ratio', 'Waistline', 'Weight', 'eGFR', 'platelets_count', 'α-HBDH']
+[ 2025-05-08 11:03:44 - INFO - train_ml_models.py:83 ] - ['ABSI', 'AKP', 'ALB_to_GLO_ratio', 'ALT', 'AST', 'AST_to_ALT_ratio', 'Age', 'Albumin', 'Alcohol', 'BMI', 'BRI', 'Basophil_count', 'Basophil_percentage', 'CK', 'Cholesterol', 'Creatinine', 'Cystatin-C', 'DBIL', 'Diastolic_BP', 'Eosinophil_count', 'Eosinophil_percentage', 'Fasting_blood_glucose', 'GGT', 'Gender', 'Globulin', 'HB', 'HCT', 'HDL', 'Height', 'Hips', 'IBIL', 'LDH', 'LDL', 'Lymphocytes_count', 'Lymphocytes_percentage', 'MCH', 'MCHC', 'MCV', 'Monocytes_count', 'Monocytes_percentage', 'NLR', 'Neutrophil_count', 'Neutrophil_percentage', 'PHR', 'RBC', 'RDW(CV)', 'RDW(SD)', 'Serum_Urea', 'Serum_Uric_acid', 'Smoke', 'Systolic_BP', 'TBIL', 'Total_protein', 'Triglycerides', 'Uric_PH', 'Uric_RBC', 'Uric_WBC', 'Uric_bacteria', 'Uric_conductivity', 'Uric_epithelium', 'Uric_specific_gravity', 'WBC', 'Waist_to_hip_ratio', 'Waistline', 'Weight', 'eGFR', 'platelets_count', 'α-HBDH']
+[ 2025-05-08 12:56:21 - INFO - custom_log.py:48 ] - 
+
+
+-----
+[ 2025-05-08 12:56:21 - INFO - custom_log.py:49 ] - Logging setup complete.
+[ 2025-05-08 12:56:22 - INFO - train_ml_models.py:87 ] - ['ABSI', 'AKP', 'ALB_to_GLO_ratio', 'ALT', 'AST', 'AST_to_ALT_ratio', 'Age', 'Albumin', 'Alcohol', 'BMI', 'BRI', 'Basophil_count', 'Basophil_percentage', 'CK', 'Cholesterol', 'Creatinine', 'Cystatin-C', 'DBIL', 'Diastolic_BP', 'Eosinophil_count', 'Eosinophil_percentage', 'Fasting_blood_glucose', 'GGT', 'Gender', 'Globulin', 'HB', 'HCT', 'HDL', 'Height', 'Hips', 'IBIL', 'LDH', 'LDL', 'Lymphocytes_count', 'Lymphocytes_percentage', 'MCH', 'MCHC', 'MCV', 'Monocytes_count', 'Monocytes_percentage', 'NLR', 'Neutrophil_count', 'Neutrophil_percentage', 'PHR', 'RBC', 'RDW(CV)', 'RDW(SD)', 'Serum_Urea', 'Serum_Uric_acid', 'Smoke', 'Systolic_BP', 'TBIL', 'Total_protein', 'Triglycerides', 'Uric_PH', 'Uric_RBC', 'Uric_WBC', 'Uric_bacteria', 'Uric_conductivity', 'Uric_epithelium', 'Uric_specific_gravity', 'WBC', 'Waist_to_hip_ratio', 'Waistline', 'Weight', 'eGFR', 'platelets_count', 'α-HBDH']
+[ 2025-05-08 12:56:22 - ERROR - custom_log.py:45 ] - Uncaught exception
+Traceback (most recent call last):
+  File "/home/mclab/ydl/ehr/train_ml_models.py", line 172, in <module>
+    main()
+  File "/home/mclab/ydl/ehr/train_ml_models.py", line 89, in main
+    trained_models = train_model(models_set, models_names_set, X_train, X_test,
+TypeError: train_model() missing 1 required positional argument: 'method'
+[ 2025-05-08 12:56:37 - INFO - custom_log.py:48 ] - 
+
+
+-----
+[ 2025-05-08 12:56:37 - INFO - custom_log.py:49 ] - Logging setup complete.
+[ 2025-05-08 12:56:38 - INFO - train_ml_models.py:91 ] - ['ABSI', 'AKP', 'ALB_to_GLO_ratio', 'ALT', 'AST', 'AST_to_ALT_ratio', 'Age', 'Albumin', 'Alcohol', 'BMI', 'BRI', 'Basophil_count', 'Basophil_percentage', 'CK', 'Cholesterol', 'Creatinine', 'Cystatin-C', 'DBIL', 'Diastolic_BP', 'Eosinophil_count', 'Eosinophil_percentage', 'Fasting_blood_glucose', 'GGT', 'Gender', 'Globulin', 'HB', 'HCT', 'HDL', 'Height', 'Hips', 'IBIL', 'LDH', 'LDL', 'Lymphocytes_count', 'Lymphocytes_percentage', 'MCH', 'MCHC', 'MCV', 'Monocytes_count', 'Monocytes_percentage', 'NLR', 'Neutrophil_count', 'Neutrophil_percentage', 'PHR', 'RBC', 'RDW(CV)', 'RDW(SD)', 'Serum_Urea', 'Serum_Uric_acid', 'Smoke', 'Systolic_BP', 'TBIL', 'Total_protein', 'Triglycerides', 'Uric_PH', 'Uric_RBC', 'Uric_WBC', 'Uric_bacteria', 'Uric_conductivity', 'Uric_epithelium', 'Uric_specific_gravity', 'WBC', 'Waist_to_hip_ratio', 'Waistline', 'Weight', 'eGFR', 'platelets_count', 'α-HBDH']
+[ 2025-05-08 13:04:00 - INFO - train_ml_models.py:91 ] - ['ABSI', 'AKP', 'ALB_to_GLO_ratio', 'ALT', 'AST', 'AST_to_ALT_ratio', 'Age', 'Albumin', 'Alcohol', 'BMI', 'BRI', 'Basophil_count', 'Basophil_percentage', 'CK', 'Cholesterol', 'Creatinine', 'Cystatin-C', 'DBIL', 'Diastolic_BP', 'Eosinophil_count', 'Eosinophil_percentage', 'Fasting_blood_glucose', 'GGT', 'Gender', 'Globulin', 'HB', 'HCT', 'HDL', 'Height', 'Hips', 'IBIL', 'LDH', 'LDL', 'Lymphocytes_count', 'Lymphocytes_percentage', 'MCH', 'MCHC', 'MCV', 'Monocytes_count', 'Monocytes_percentage', 'NLR', 'Neutrophil_count', 'Neutrophil_percentage', 'PHR', 'RBC', 'RDW(CV)', 'RDW(SD)', 'Serum_Urea', 'Serum_Uric_acid', 'Smoke', 'Systolic_BP', 'TBIL', 'Total_protein', 'Triglycerides', 'Uric_PH', 'Uric_RBC', 'Uric_WBC', 'Uric_bacteria', 'Uric_conductivity', 'Uric_epithelium', 'Uric_specific_gravity', 'WBC', 'Waist_to_hip_ratio', 'Waistline', 'Weight', 'eGFR', 'platelets_count', 'α-HBDH']
+[ 2025-05-08 13:13:56 - INFO - train_ml_models.py:91 ] - ['ABSI', 'AKP', 'ALB_to_GLO_ratio', 'ALT', 'AST', 'AST_to_ALT_ratio', 'Age', 'Albumin', 'Alcohol', 'BMI', 'BRI', 'Basophil_count', 'Basophil_percentage', 'CK', 'Cholesterol', 'Creatinine', 'Cystatin-C', 'DBIL', 'Diastolic_BP', 'Eosinophil_count', 'Eosinophil_percentage', 'Fasting_blood_glucose', 'GGT', 'Gender', 'Globulin', 'HB', 'HCT', 'HDL', 'Height', 'Hips', 'IBIL', 'LDH', 'LDL', 'Lymphocytes_count', 'Lymphocytes_percentage', 'MCH', 'MCHC', 'MCV', 'Monocytes_count', 'Monocytes_percentage', 'NLR', 'Neutrophil_count', 'Neutrophil_percentage', 'PHR', 'RBC', 'RDW(CV)', 'RDW(SD)', 'Serum_Urea', 'Serum_Uric_acid', 'Smoke', 'Systolic_BP', 'TBIL', 'Total_protein', 'Triglycerides', 'Uric_PH', 'Uric_RBC', 'Uric_WBC', 'Uric_bacteria', 'Uric_conductivity', 'Uric_epithelium', 'Uric_specific_gravity', 'WBC', 'Waist_to_hip_ratio', 'Waistline', 'Weight', 'eGFR', 'platelets_count', 'α-HBDH']
+[ 2025-05-08 13:23:29 - INFO - train_ml_models.py:91 ] - ['ABSI', 'AKP', 'ALB_to_GLO_ratio', 'ALT', 'AST', 'AST_to_ALT_ratio', 'Age', 'Albumin', 'Alcohol', 'BMI', 'BRI', 'Basophil_count', 'Basophil_percentage', 'CK', 'Cholesterol', 'Creatinine', 'Cystatin-C', 'DBIL', 'Diastolic_BP', 'Eosinophil_count', 'Eosinophil_percentage', 'Fasting_blood_glucose', 'GGT', 'Gender', 'Globulin', 'HB', 'HCT', 'HDL', 'Height', 'Hips', 'IBIL', 'LDH', 'LDL', 'Lymphocytes_count', 'Lymphocytes_percentage', 'MCH', 'MCHC', 'MCV', 'Monocytes_count', 'Monocytes_percentage', 'NLR', 'Neutrophil_count', 'Neutrophil_percentage', 'PHR', 'RBC', 'RDW(CV)', 'RDW(SD)', 'Serum_Urea', 'Serum_Uric_acid', 'Smoke', 'Systolic_BP', 'TBIL', 'Total_protein', 'Triglycerides', 'Uric_PH', 'Uric_RBC', 'Uric_WBC', 'Uric_bacteria', 'Uric_conductivity', 'Uric_epithelium', 'Uric_specific_gravity', 'WBC', 'Waist_to_hip_ratio', 'Waistline', 'Weight', 'eGFR', 'platelets_count', 'α-HBDH']
+[ 2025-05-08 14:21:55 - INFO - custom_log.py:48 ] - 
+
+
+-----
+[ 2025-05-08 14:21:55 - INFO - custom_log.py:49 ] - Logging setup complete.
+[ 2025-05-08 14:21:56 - INFO - train_ml_models.py:91 ] - ['ABSI', 'AKP', 'ALB_to_GLO_ratio', 'ALT', 'AST', 'AST_to_ALT_ratio', 'Age', 'Albumin', 'Alcohol', 'BMI', 'BRI', 'Basophil_count', 'Basophil_percentage', 'CK', 'Cholesterol', 'Creatinine', 'Cystatin-C', 'DBIL', 'Diastolic_BP', 'Eosinophil_count', 'Eosinophil_percentage', 'Fasting_blood_glucose', 'GGT', 'Gender', 'Globulin', 'HB', 'HCT', 'HDL', 'Height', 'Hips', 'IBIL', 'LDH', 'LDL', 'Lymphocytes_count', 'Lymphocytes_percentage', 'MCH', 'MCHC', 'MCV', 'Monocytes_count', 'Monocytes_percentage', 'NLR', 'Neutrophil_count', 'Neutrophil_percentage', 'PHR', 'RBC', 'RDW(CV)', 'RDW(SD)', 'Serum_Urea', 'Serum_Uric_acid', 'Smoke', 'Systolic_BP', 'TBIL', 'Total_protein', 'Triglycerides', 'Uric_PH', 'Uric_RBC', 'Uric_WBC', 'Uric_bacteria', 'Uric_conductivity', 'Uric_epithelium', 'Uric_specific_gravity', 'WBC', 'Waist_to_hip_ratio', 'Waistline', 'Weight', 'eGFR', 'platelets_count', 'α-HBDH']
+[ 2025-05-08 14:29:13 - INFO - train_ml_models.py:91 ] - ['ABSI', 'AKP', 'ALB_to_GLO_ratio', 'ALT', 'AST', 'AST_to_ALT_ratio', 'Age', 'Albumin', 'Alcohol', 'BMI', 'BRI', 'Basophil_count', 'Basophil_percentage', 'CK', 'Cholesterol', 'Creatinine', 'Cystatin-C', 'DBIL', 'Diastolic_BP', 'Eosinophil_count', 'Eosinophil_percentage', 'Fasting_blood_glucose', 'GGT', 'Gender', 'Globulin', 'HB', 'HCT', 'HDL', 'Height', 'Hips', 'IBIL', 'LDH', 'LDL', 'Lymphocytes_count', 'Lymphocytes_percentage', 'MCH', 'MCHC', 'MCV', 'Monocytes_count', 'Monocytes_percentage', 'NLR', 'Neutrophil_count', 'Neutrophil_percentage', 'PHR', 'RBC', 'RDW(CV)', 'RDW(SD)', 'Serum_Urea', 'Serum_Uric_acid', 'Smoke', 'Systolic_BP', 'TBIL', 'Total_protein', 'Triglycerides', 'Uric_PH', 'Uric_RBC', 'Uric_WBC', 'Uric_bacteria', 'Uric_conductivity', 'Uric_epithelium', 'Uric_specific_gravity', 'WBC', 'Waist_to_hip_ratio', 'Waistline', 'Weight', 'eGFR', 'platelets_count', 'α-HBDH']
+[ 2025-05-08 14:39:25 - INFO - train_ml_models.py:91 ] - ['ABSI', 'AKP', 'ALB_to_GLO_ratio', 'ALT', 'AST', 'AST_to_ALT_ratio', 'Age', 'Albumin', 'Alcohol', 'BMI', 'BRI', 'Basophil_count', 'Basophil_percentage', 'CK', 'Cholesterol', 'Creatinine', 'Cystatin-C', 'DBIL', 'Diastolic_BP', 'Eosinophil_count', 'Eosinophil_percentage', 'Fasting_blood_glucose', 'GGT', 'Gender', 'Globulin', 'HB', 'HCT', 'HDL', 'Height', 'Hips', 'IBIL', 'LDH', 'LDL', 'Lymphocytes_count', 'Lymphocytes_percentage', 'MCH', 'MCHC', 'MCV', 'Monocytes_count', 'Monocytes_percentage', 'NLR', 'Neutrophil_count', 'Neutrophil_percentage', 'PHR', 'RBC', 'RDW(CV)', 'RDW(SD)', 'Serum_Urea', 'Serum_Uric_acid', 'Smoke', 'Systolic_BP', 'TBIL', 'Total_protein', 'Triglycerides', 'Uric_PH', 'Uric_RBC', 'Uric_WBC', 'Uric_bacteria', 'Uric_conductivity', 'Uric_epithelium', 'Uric_specific_gravity', 'WBC', 'Waist_to_hip_ratio', 'Waistline', 'Weight', 'eGFR', 'platelets_count', 'α-HBDH']
+[ 2025-05-08 14:49:04 - INFO - train_ml_models.py:91 ] - ['ABSI', 'AKP', 'ALB_to_GLO_ratio', 'ALT', 'AST', 'AST_to_ALT_ratio', 'Age', 'Albumin', 'Alcohol', 'BMI', 'BRI', 'Basophil_count', 'Basophil_percentage', 'CK', 'Cholesterol', 'Creatinine', 'Cystatin-C', 'DBIL', 'Diastolic_BP', 'Eosinophil_count', 'Eosinophil_percentage', 'Fasting_blood_glucose', 'GGT', 'Gender', 'Globulin', 'HB', 'HCT', 'HDL', 'Height', 'Hips', 'IBIL', 'LDH', 'LDL', 'Lymphocytes_count', 'Lymphocytes_percentage', 'MCH', 'MCHC', 'MCV', 'Monocytes_count', 'Monocytes_percentage', 'NLR', 'Neutrophil_count', 'Neutrophil_percentage', 'PHR', 'RBC', 'RDW(CV)', 'RDW(SD)', 'Serum_Urea', 'Serum_Uric_acid', 'Smoke', 'Systolic_BP', 'TBIL', 'Total_protein', 'Triglycerides', 'Uric_PH', 'Uric_RBC', 'Uric_WBC', 'Uric_bacteria', 'Uric_conductivity', 'Uric_epithelium', 'Uric_specific_gravity', 'WBC', 'Waist_to_hip_ratio', 'Waistline', 'Weight', 'eGFR', 'platelets_count', 'α-HBDH']

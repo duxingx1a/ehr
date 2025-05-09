@@ -1,0 +1,162 @@
+[ 2025-05-08 16:39:27 - INFO - custom_log.py:48 ] - 
+
+
+-----
+[ 2025-05-08 16:39:27 - INFO - custom_log.py:49 ] - Logging setup complete.
+[ 2025-05-08 16:39:28 - ERROR - custom_log.py:45 ] - Uncaught exception
+Traceback (most recent call last):
+  File "/home/mclab/ydl/ehr/metrics_custom.py", line 245, in <module>
+    main()
+  File "/home/mclab/ydl/ehr/metrics_custom.py", line 162, in main
+    _, X_test, _, Y_test = utils.get_data(df)
+AttributeError: module 'utils' has no attribute 'get_data'
+[ 2025-05-08 16:39:49 - INFO - custom_log.py:48 ] - 
+
+
+-----
+[ 2025-05-08 16:39:49 - INFO - custom_log.py:49 ] - Logging setup complete.
+[ 2025-05-08 16:39:53 - ERROR - custom_log.py:45 ] - Uncaught exception
+Traceback (most recent call last):
+  File "/home/mclab/ydl/ehr/metrics_custom.py", line 246, in <module>
+    evaluate_imputation_strategy_metrics()
+  File "/home/mclab/ydl/ehr/metrics_custom.py", line 227, in evaluate_imputation_strategy_metrics
+    _, X_test, _, Y_test = utils.get_data(df)
+AttributeError: module 'utils' has no attribute 'get_data'
+[ 2025-05-08 16:40:05 - INFO - custom_log.py:48 ] - 
+
+
+-----
+[ 2025-05-08 16:40:05 - INFO - custom_log.py:49 ] - Logging setup complete.
+[ 2025-05-08 16:40:42 - ERROR - custom_log.py:45 ] - Uncaught exception
+Traceback (most recent call last):
+  File "/home/mclab/ydl/ehr/metrics_custom.py", line 246, in <module>
+    evaluate_imputation_strategy_metrics()
+  File "/home/mclab/ydl/ehr/metrics_custom.py", line 240, in evaluate_imputation_strategy_metrics
+    save_all_to_excel(all_results, 'all_metrics_results.xlsx')
+  File "/home/mclab/ydl/ehr/metrics_custom.py", line 179, in save_all_to_excel
+    with pd.ExcelWriter(filename, engine='xlsxwriter') as writer:
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/pandas/io/excel/_xlsxwriter.py", line 197, in __init__
+    from xlsxwriter import Workbook
+ModuleNotFoundError: No module named 'xlsxwriter'
+[ 2025-05-08 16:41:08 - INFO - custom_log.py:48 ] - 
+
+
+-----
+[ 2025-05-08 16:41:08 - INFO - custom_log.py:49 ] - Logging setup complete.
+[ 2025-05-08 16:41:44 - ERROR - custom_log.py:45 ] - Uncaught exception
+Traceback (most recent call last):
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/pandas/core/internals/construction.py", line 939, in _finalize_columns_and_data
+    columns = _validate_or_indexify_columns(contents, columns)
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/pandas/core/internals/construction.py", line 986, in _validate_or_indexify_columns
+    raise AssertionError(
+AssertionError: 6 columns passed, passed data had 10 columns
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mclab/ydl/ehr/metrics_custom.py", line 183, in save_all_to_excel
+    df = pd.DataFrame(metrics_list, columns=columns)
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/pandas/core/frame.py", line 851, in __init__
+    arrays, columns, index = nested_data_to_arrays(
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/pandas/core/internals/construction.py", line 520, in nested_data_to_arrays
+    arrays, columns = to_arrays(data, columns, dtype=dtype)
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/pandas/core/internals/construction.py", line 845, in to_arrays
+    content, columns = _finalize_columns_and_data(arr, columns, dtype)
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/pandas/core/internals/construction.py", line 942, in _finalize_columns_and_data
+    raise ValueError(err) from err
+ValueError: 6 columns passed, passed data had 10 columns
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mclab/ydl/ehr/metrics_custom.py", line 246, in <module>
+    evaluate_imputation_strategy_metrics()
+  File "/home/mclab/ydl/ehr/metrics_custom.py", line 240, in evaluate_imputation_strategy_metrics
+    save_all_to_excel(all_results, 'all_metrics_results.xlsx')
+  File "/home/mclab/ydl/ehr/metrics_custom.py", line 179, in save_all_to_excel
+    with pd.ExcelWriter(filename) as writer:
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 1353, in __exit__
+    self.close()
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 1357, in close
+    self._save()
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/pandas/io/excel/_openpyxl.py", line 110, in _save
+    self.book.save(self._handles.handle)
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/openpyxl/workbook/workbook.py", line 386, in save
+    save_workbook(self, filename)
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/openpyxl/writer/excel.py", line 294, in save_workbook
+    writer.save()
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/openpyxl/writer/excel.py", line 275, in save
+    self.write_data()
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/openpyxl/writer/excel.py", line 89, in write_data
+    archive.writestr(ARC_WORKBOOK, writer.write())
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/openpyxl/workbook/_writer.py", line 150, in write
+    self.write_views()
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/openpyxl/workbook/_writer.py", line 137, in write_views
+    active = get_active_sheet(self.wb)
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/openpyxl/workbook/_writer.py", line 35, in get_active_sheet
+    raise IndexError("At least one sheet must be visible")
+IndexError: At least one sheet must be visible
+[ 2025-05-08 16:54:22 - INFO - custom_log.py:48 ] - 
+
+
+-----
+[ 2025-05-08 16:54:22 - INFO - custom_log.py:49 ] - Logging setup complete.
+[ 2025-05-08 16:54:58 - ERROR - custom_log.py:45 ] - Uncaught exception
+Traceback (most recent call last):
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/pandas/core/internals/construction.py", line 939, in _finalize_columns_and_data
+    columns = _validate_or_indexify_columns(contents, columns)
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/pandas/core/internals/construction.py", line 986, in _validate_or_indexify_columns
+    raise AssertionError(
+AssertionError: 10 columns passed, passed data had 11 columns
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mclab/ydl/ehr/metrics_custom.py", line 223, in <module>
+    evaluate_imputation_strategy_metrics()
+  File "/home/mclab/ydl/ehr/metrics_custom.py", line 217, in evaluate_imputation_strategy_metrics
+    save_to_excel(all_metrics_list, 'metrics_all.xlsx')
+  File "/home/mclab/ydl/ehr/metrics_custom.py", line 128, in save_to_excel
+    metrics_df = pd.DataFrame(metrics_list,
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/pandas/core/frame.py", line 851, in __init__
+    arrays, columns, index = nested_data_to_arrays(
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/pandas/core/internals/construction.py", line 520, in nested_data_to_arrays
+    arrays, columns = to_arrays(data, columns, dtype=dtype)
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/pandas/core/internals/construction.py", line 845, in to_arrays
+    content, columns = _finalize_columns_and_data(arr, columns, dtype)
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/pandas/core/internals/construction.py", line 942, in _finalize_columns_and_data
+    raise ValueError(err) from err
+ValueError: 10 columns passed, passed data had 11 columns
+[ 2025-05-08 16:55:30 - INFO - custom_log.py:48 ] - 
+
+
+-----
+[ 2025-05-08 16:55:30 - INFO - custom_log.py:49 ] - Logging setup complete.
+[ 2025-05-08 16:55:32 - ERROR - custom_log.py:45 ] - Uncaught exception
+Traceback (most recent call last):
+  File "/home/mclab/ydl/ehr/metrics_custom.py", line 220, in <module>
+    main()
+  File "/home/mclab/ydl/ehr/metrics_custom.py", line 162, in main
+    _, X_test, _, Y_test = utils.get_data(df)
+AttributeError: module 'utils' has no attribute 'get_data'
+[ 2025-05-08 16:56:14 - INFO - custom_log.py:48 ] - 
+
+
+-----
+[ 2025-05-08 16:56:14 - INFO - custom_log.py:49 ] - Logging setup complete.
+[ 2025-05-08 16:56:15 - ERROR - custom_log.py:45 ] - Uncaught exception
+Traceback (most recent call last):
+  File "/home/mclab/ydl/ehr/metrics_custom.py", line 221, in <module>
+    main()
+  File "/home/mclab/ydl/ehr/metrics_custom.py", line 162, in main
+    _, X_test, _, Y_test = utils.get_data(df)
+AttributeError: module 'utils' has no attribute 'get_data'
+[ 2025-05-08 16:56:25 - INFO - custom_log.py:48 ] - 
+
+
+-----
+[ 2025-05-08 16:56:25 - INFO - custom_log.py:49 ] - Logging setup complete.
+[ 2025-05-08 16:56:25 - INFO - metrics_custom.py:188 ] - ['model_adb_05-08_1422_90.25%.pkl', 'model_mlp_05-08_1428_90.28%.pkl', 'model_rf_05-08_1429_90.30%.pkl', 'model_lda_05-08_1428_90.21%.pkl', 'model_gb_05-08_1426_90.31%.pkl', 'model_lr_05-08_1428_90.24%.pkl', 'model_xgb_05-08_1429_90.34%.pkl', 'model_gnb_05-08_1426_70.65%.pkl', 'model_dt_05-08_1423_81.79%.pkl', 'model_lgbm_05-08_1428_90.35%.pkl']
+[ 2025-05-08 16:56:32 - INFO - metrics_custom.py:188 ] - ['model_gnb_05-08_1436_68.96%.pkl', 'model_dt_05-08_1430_80.21%.pkl', 'model_gb_05-08_1436_89.17%.pkl', 'model_mlp_05-08_1438_89.13%.pkl', 'model_lda_05-08_1437_89.11%.pkl', 'model_lr_05-08_1437_89.13%.pkl', 'model_lgbm_05-08_1437_89.23%.pkl', 'model_adb_05-08_1430_89.13%.pkl', 'model_rf_05-08_1439_89.16%.pkl', 'model_xgb_05-08_1439_89.17%.pkl']
+[ 2025-05-08 16:56:42 - INFO - metrics_custom.py:188 ] - ['model_lr_05-08_1447_89.12%.pkl', 'model_dt_05-08_1441_80.36%.pkl', 'model_lda_05-08_1447_89.11%.pkl', 'model_xgb_05-08_1449_89.22%.pkl', 'model_mlp_05-08_1448_89.14%.pkl', 'model_gb_05-08_1446_89.17%.pkl', 'model_rf_05-08_1449_89.15%.pkl', 'model_adb_05-08_1440_89.13%.pkl', 'model_gnb_05-08_1446_68.51%.pkl', 'model_lgbm_05-08_1447_89.23%.pkl']
+[ 2025-05-08 16:56:51 - INFO - metrics_custom.py:188 ] - ['model_gb_05-08_1455_89.17%.pkl', 'model_lgbm_05-08_1457_89.24%.pkl', 'model_mlp_05-08_1458_89.13%.pkl', 'model_dt_05-08_1450_80.19%.pkl', 'model_lda_05-08_1457_89.11%.pkl', 'model_gnb_05-08_1455_68.45%.pkl', 'model_rf_05-08_1458_89.15%.pkl', 'model_lr_05-08_1457_89.13%.pkl', 'model_xgb_05-08_1458_89.20%.pkl', 'model_adb_05-08_1450_89.13%.pkl']
