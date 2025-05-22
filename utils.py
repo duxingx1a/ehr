@@ -65,6 +65,18 @@ def get_train_test_data(df=None,
         Y_train (pd.Series): 训练集标签。
         Y_test (pd.Series): 测试集标签。
     """
+    #统一数据
+    df = pd.read_csv("./data/Train-test-dataset_Ver3.csv")
+    # 类别型变量众数填充，提前处理
+    categorical_columns = ['Alcohol', 'Smoke', 'Uric_bacteria','Uric_epithelium']
+    print(df[categorical_columns].isnull().sum())
+    for col in categorical_columns:
+        # 计算每列的众数
+        mode_value = df[col].mode()[0]  # 使用 mode()[0] 获取第一个众数
+        # 使用众数填充该列的空值
+        df[col] = df[col].fillna(mode_value)  # 直接在原始 DataFrame 上操作
+    df.to_csv('selected_samples.csv', index=False)
+    print(df[categorical_columns].isnull().sum())
     # 分离特征和目标变量
     X = df.drop(columns=[target_column])
     Y = df[target_column]

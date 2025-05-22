@@ -136,10 +136,8 @@ def save_to_excel(metrics_list, filename):
 
 
 def main():
-    models_names_list = ("AdaBoost", "DecisionTree", "GradientBoosting",
-                         "GaussianNB", "LinearDiscriminantAnalysis", "LightGBM",
-                         "LogisticRegression", "MultilayerPerceptron",
-                         "RandomForest", "XGBoost")
+    models_names_list = ("AdaBoost", "DecisionTree", "GradientBoosting", "GaussianNB", "LinearDiscriminantAnalysis",
+                         "LightGBM", "LogisticRegression", "MultilayerPerceptron", "RandomForest", "XGBoost")
     models_path = 'models/'
     models_list = []
     # 遍历models文件夹中的所有文件
