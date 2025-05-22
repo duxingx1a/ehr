@@ -68,17 +68,17 @@ def clean_data(df, method='mean', fill_value=None):
 
 if __name__ == "__main__":
     # 读取源数据
-    file_path = 'data/Train-test-dataset_Ver4_process.csv'
+    file_path = 'data/Train-test-dataset_Ver-electronic-nooutliers.csv'
     df = pd.read_csv(file_path)
     df['have_stone'] = df['have_stone'].astype('int')  # 确保标签是整数类型
 
     # 定义填充方法和对应的文件名
     methods = {
-        # 'drop': f'{file_path}_drop.csv',
-        # 'mean': f'{file_path}_mean_mode.csv',
-        # 'median': f'{file_path}_median_mode.csv',
-        # 'random_forest': f'{file_path}_random_forest.csv',
-        'iterative': f'{file_path}_iterative.csv'
+        'drop': f'{file_path[:-4]}_drop.csv',
+        'mean': f'{file_path[:-4]}_mean_mode.csv',
+        'median': f'{file_path[:-4]}_median_mode.csv',
+        # 'random_forest': f'{file_path[:-4]}_random_forest.csv',
+        'iterative': f'{file_path[:-4]}_iterative.csv'
     }
 
     # 使用循环进行数据清洗和保存

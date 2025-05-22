@@ -33,14 +33,10 @@ def get_all_dataset():
     
     ## 手动
     dataset_paths = [
-        'data/Train-test-dataset_Ver-electronic-nooutliers_drop.csv',
-        'data/Train-test-dataset_Ver-electronic-nooutliers_mean_mode.csv',
-        'data/Train-test-dataset_Ver-electronic-nooutliers_median_mode.csv'
-        'data/Train-test-dataset_Ver-electronic-nooutliers_iterative.csv'
-        # "data/Train-test-dataset_Ver4_drop.csv",
-        # "data/Train-test-dataset_Ver4_iterative.csv",
-        # "data/Train-test-dataset_Ver4_mean_mode.csv",
-        # "data/Train-test-dataset_Ver4_median_mode.csv"
+        "data/Train-test-dataset_Ver4_drop.csv",
+        "data/Train-test-dataset_Ver4_iterative.csv",
+        "data/Train-test-dataset_Ver4_mean_mode.csv",
+        "data/Train-test-dataset_Ver4_median_mode.csv"
     ]
     #自动读取data目录下所有数据文件
     # dataset_paths = [os.path.join("data", f) for f in os.listdir("data") if f.endswith(".csv")]
@@ -79,11 +75,52 @@ def get_train_test_data(df=None,
     return X_train, X_test, Y_train, Y_test
 
 
-if __name__ == '__main__':
-    dataset=get_all_dataset()
-    print(dataset)
-    df = pd.read_csv("data/Train-test-dataset_Ver4_process.csv_drop.csv")
-    X_train, X_test, Y_train, Y_test = get_train_test_data(df)
-    # print(X_train.shape, Y_train.shape)
-    # print(X_test.shape, Y_test.shape)
-    # print(X_train.isna().sum())
+class EHR_dataset():
+    """
+    This class is used to define custom models for the EHR system.
+    """
+
+    def __init__(self):
+        # 读取数据集并存储为字典
+        self.datasets = {}
+        #手动或自动
+        dataset_paths = [
+            "data/Train-test-dataset_Ver4_drop.csv",
+            "data/Train-test-dataset_Ver4_iterative.csv",
+            "data/Train-test-dataset_Ver4_mean_mode.csv",
+            "data/Train-test-dataset_Ver4_median_mode.csv"
+        ]
+        #自动读取data目录下所有数据文件
+        # dataset_paths = [os.path.join("data", f) for f in os.listdir("data") if f.endswith(".csv")]
+        dataset_names = ['drop', 'iterative', 'mean_mode', 'median_mode']
+        
+        for name, path in zip(dataset_names, dataset_paths):
+            self.datasets[name] = pd.read_csv(path)    
+        
+    def custom_model(self):
+        """
+        This method defines a custom model.
+        """
+        pass
+
+    def get_models(self):
+        """
+        This method retrieves the custom model.
+        """
+        return self.models_list 
+
+if __name__ == "__main__":
+    # 测试 Models 类
+    # 这里可以根据需要添加测试代码
+    ehr_datasets= EHR_dataset()
+    # 获取所有数据集
+    datasets = ehr_datasets.datasets
+    # 打印数据集名称和路径
+    for name, path in datasets.items():
+        print(f"Dataset Name: {name}, Path: {path}")
+    # 获取训练集和测试集
+    for name, df in datasets.items():
+        X_train, X_test, Y_train, Y_test = get_train_test_data(df)
+        print(f"Dataset Name: {name}, X_train shape: {X_train.shape}, X_test shape: {X_test.shape}")
+        print(f"Dataset Name: {name}, Y_train shape: {Y_train.shape}, Y_test shape: {Y_test.shape}")
+

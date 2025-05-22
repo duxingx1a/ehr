@@ -44,3 +44,49 @@ IndexError: only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`
 [ 2025-05-07 17:40:47 - INFO - custom_log.py:49 ] - Logging setup complete.
 [ 2025-05-07 18:04:28 - INFO - clean_data.py:89 ] - ✅ 已保存：iterative填充数据
 [ 2025-05-07 18:04:28 - INFO - clean_data.py:90 ] - iterative填充数据已保存，耗时：1418.92秒
+[ 2025-05-15 13:59:44 - INFO - custom_log.py:48 ] - 
+
+
+-----
+[ 2025-05-15 13:59:44 - INFO - custom_log.py:49 ] - Logging setup complete.
+[ 2025-05-15 13:59:46 - INFO - clean_data.py:89 ] - ✅ 已保存：drop填充数据
+[ 2025-05-15 13:59:46 - INFO - clean_data.py:90 ] - drop填充数据已保存，耗时：1.85秒
+[ 2025-05-15 13:59:51 - INFO - clean_data.py:89 ] - ✅ 已保存：mean填充数据
+[ 2025-05-15 13:59:51 - INFO - clean_data.py:90 ] - mean填充数据已保存，耗时：4.04秒
+[ 2025-05-15 13:59:55 - INFO - clean_data.py:89 ] - ✅ 已保存：median填充数据
+[ 2025-05-15 13:59:55 - INFO - clean_data.py:90 ] - median填充数据已保存，耗时：4.40秒
+[ 2025-05-15 14:28:12 - INFO - custom_log.py:48 ] - 
+
+
+-----
+[ 2025-05-15 14:28:12 - INFO - custom_log.py:49 ] - Logging setup complete.
+[ 2025-05-15 14:28:17 - INFO - clean_data.py:89 ] - ✅ 已保存：drop填充数据
+[ 2025-05-15 14:28:17 - INFO - clean_data.py:90 ] - drop填充数据已保存，耗时：3.83秒
+[ 2025-05-15 14:28:22 - INFO - clean_data.py:89 ] - ✅ 已保存：mean填充数据
+[ 2025-05-15 14:28:22 - INFO - clean_data.py:90 ] - mean填充数据已保存，耗时：5.60秒
+[ 2025-05-15 14:28:30 - INFO - clean_data.py:89 ] - ✅ 已保存：median填充数据
+[ 2025-05-15 14:28:30 - INFO - clean_data.py:90 ] - median填充数据已保存，耗时：7.88秒
+[ 2025-05-15 14:29:05 - INFO - custom_log.py:48 ] - 
+
+
+-----
+[ 2025-05-15 14:29:05 - INFO - custom_log.py:49 ] - Logging setup complete.
+[ 2025-05-15 14:29:08 - INFO - clean_data.py:89 ] - ✅ 已保存：drop填充数据
+[ 2025-05-15 14:29:08 - INFO - clean_data.py:90 ] - drop填充数据已保存，耗时：1.75秒
+[ 2025-05-15 14:29:12 - INFO - clean_data.py:89 ] - ✅ 已保存：mean填充数据
+[ 2025-05-15 14:29:12 - INFO - clean_data.py:90 ] - mean填充数据已保存，耗时：3.82秒
+[ 2025-05-15 14:29:16 - INFO - clean_data.py:89 ] - ✅ 已保存：median填充数据
+[ 2025-05-15 14:29:16 - INFO - clean_data.py:90 ] - median填充数据已保存，耗时：4.41秒
+[ 2025-05-15 16:39:44 - INFO - custom_log.py:48 ] - 
+
+
+-----
+[ 2025-05-15 16:39:44 - INFO - custom_log.py:49 ] - Logging setup complete.
+[ 2025-05-15 16:39:47 - INFO - clean_data.py:89 ] - ✅ 已保存：drop填充数据
+[ 2025-05-15 16:39:47 - INFO - clean_data.py:90 ] - drop填充数据已保存，耗时：1.84秒
+[ 2025-05-15 16:39:51 - INFO - clean_data.py:89 ] - ✅ 已保存：mean填充数据
+[ 2025-05-15 16:39:51 - INFO - clean_data.py:90 ] - mean填充数据已保存，耗时：4.04秒
+[ 2025-05-15 16:39:55 - INFO - clean_data.py:89 ] - ✅ 已保存：median填充数据
+[ 2025-05-15 16:39:55 - INFO - clean_data.py:90 ] - median填充数据已保存，耗时：4.26秒
+[ 2025-05-15 16:44:53 - INFO - clean_data.py:89 ] - ✅ 已保存：iterative填充数据
+[ 2025-05-15 16:44:53 - INFO - clean_data.py:90 ] - iterative填充数据已保存，耗时：297.81秒

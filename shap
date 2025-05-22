@@ -1,0 +1,25 @@
+import xgboost as xgb
+import shap
+import utils
+import pandas as pd
+# 假设模型已经训练好并保存为 'xgb_model.model'
+xgb_model = xgb.Booster()
+xgb_model.load_model('/home/mclab/ydl/ehr/models/Ver4_mean_mode/model_xgb_05-09_1110_89.21%.pkl')
+
+dataset = '/home/mclab/ydl/ehr/data/Train-test-dataset_Ver4_mean_mode.csv'
+df = pd.read_csv(dataset)
+X_train, X_test, Y_train, Y_test = utils.get_train_test_data(df)
+# 对于原始的 XGBoost Booster 模型
+explainer = shap.TreeExplainer(xgb_model)
+
+shap_values = explainer.shap_values(X_train)
+
+shap.summary_plot(shap_values, X_train)
+
+# 选择一个样本，例如索引为 0 的样本
+shap.force_plot(explainer.expected_value, shap_values[0,:], X_train.iloc[0,:])
+
+# 例如，查看 'Age' 特征的影响
+shap.dependence_plot("Age", shap_values, X_train)
+
+shap.summary_plot(shap_values, X_train, plot_type="bar")
