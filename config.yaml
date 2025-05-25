@@ -1,0 +1,116 @@
+# config.yaml
+AdaBoostClassifier:
+  default:
+    n_estimators: 50
+    learning_rate: 1.0
+    random_state: 42
+  custom:
+    n_estimators: 200
+    learning_rate: 1.0
+    random_state: 42
+
+DecisionTreeClassifier:
+  default:
+    criterion: "gini"
+    max_depth: 5
+    min_samples_split: 2
+  custom:
+    criterion: "gini"
+    max_depth: 8
+    min_samples_split: 2
+    class_weight: "balanced"
+
+GaussianNB:
+  default:
+    var_smoothing: 1e-09
+  custom:
+    var_smoothing: 1e-09
+
+GradientBoostingClassifier:
+  default:
+    n_estimators: 100
+    learning_rate: 0.1
+    max_depth: 3
+  custom:
+    n_estimators: 200
+    learning_rate: 0.1
+    max_depth: 5
+
+LGBMClassifier:
+  default:
+    boosting_type: "gbdt"
+    num_leaves: 31
+    max_depth: -1
+    learning_rate: 0.1
+    n_estimators: 100
+    n_jobs: -1
+    device_type: "gpu"
+  custom:
+    boosting_type: "gbdt"
+    num_leaves: 31
+    max_depth: 30
+    learning_rate: 0.1
+    n_estimators: 300
+    n_jobs: -1
+    device_type: "gpu"
+
+LinearDiscriminantAnalysis:
+  default:
+    solver: "svd"
+  custom:
+    solver: "LSQR"
+
+LogisticRegression:
+  default:
+    solver: "lbfgs"
+    max_iter: 100
+    random_state: 42
+    n_jobs: -1
+  custom:
+    solver: "saga"
+    penalty: "elasticnet"
+    max_iter: 100
+    random_state: 42
+    n_jobs: -1
+
+MLPClassifier:
+  default:
+    hidden_layer_sizes: [100]
+    activation: "relu"
+    solver: "adam"
+    max_iter: 200
+  custom:
+    hidden_layer_sizes: [500]
+    activation: "relu"
+    solver: "adam"
+    learning_rate: "adaptive"
+    early_stopping: True
+    max_iter: 200
+
+RandomForestClassifier:
+  default:
+    n_estimators: 100
+    max_depth: 5
+    random_state: 42
+    n_jobs: -1
+  custom:
+    n_estimators: 300
+    max_depth: 8
+    random_state: 42
+    n_jobs: -1
+
+XGBClassifier:
+  default:
+    device: "gpu"
+  custom:
+    learning_rate: 0.1
+    n_estimators: 500
+    max_depth: 3
+    random_state: 42
+    device: "gpu"
+
+train_test_split_config:
+  random_state: 42
+  smote: False
+  std: False
+  

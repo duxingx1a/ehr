@@ -1,39 +1,34 @@
+from calendar import c
+import yaml
 from datetime import datetime
 import os
 import pickle
-from pyexpat import model
-from sklearn import metrics
-from sklearn.ensemble import AdaBoostClassifier
+from sklearn.ensemble import AdaBoostClassifier, GradientBoostingClassifier, RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.linear_model import LogisticRegression
 from sklearn.neural_network import MLPClassifier
-from sklearn.ensemble import RandomForestClassifier
 from lightgbm import LGBMClassifier
-from tqdm import tqdm
 from xgboost import XGBClassifier
-
-import os
-import pickle
-import torch
-from scipy.stats import sem, t
-
-import pandas as pd
 from sklearn.metrics import roc_curve, roc_auc_score, precision_recall_curve, average_precision_score, f1_score, \
     precision_score, recall_score, accuracy_score
+
+from tqdm import tqdm
+from scipy.stats import sem, t
+import pandas as pd
 import matplotlib.pyplot as plt
+
+from utils.custom_config import load_config
 
 
 def init_adaBoost(default_parm=True):
     """
     This function initializes the AdaBoost classifier model.
     """
-    if default_parm:
-        model_adaboost = AdaBoostClassifier()
-    else:
-        model_adaboost = AdaBoostClassifier(n_estimators=100, learning_rate=1.0, random_state=42)
+    config = load_config()
+    params = config['AdaBoostClassifier']['default'] if default_parm else config['AdaBoostClassifier']['custom']
+    model_adaboost = AdaBoostClassifier(**params)
     return model_adaboost
 
 
@@ -41,10 +36,10 @@ def init_decisionTree(default_parm=True):
     """
     This function initializes the Decision Tree classifier model.
     """
-    if default_parm:
-        model_decisionTree = DecisionTreeClassifier()
-    else:
-        model_decisionTree = DecisionTreeClassifier(criterion='gini', max_depth=5, min_samples_split=2)
+    config = load_config()
+    params = config['DecisionTreeClassifier']['default'] if default_parm else config['DecisionTreeClassifier']['custom']
+    model_decisionTree = DecisionTreeClassifier(**params)
+    return model_decisionTree
     return model_decisionTree
 
 
@@ -52,10 +47,9 @@ def init_gaussianNB(default_parm=True):
     """
     This function initializes the Gaussian Naive Bayes classifier model.
     """
-    if default_parm:
-        model_gaussianNB = GaussianNB()
-    else:
-        model_gaussianNB = GaussianNB(var_smoothing=1e-9)
+    config = load_config()
+    params = config['GaussianNB']['default'] if default_parm else config['GaussianNB']['custom']
+    model_gaussianNB = GaussianNB(**params)
     return model_gaussianNB
 
 
@@ -63,10 +57,9 @@ def init_gradientBoosting(default_parm=True):
     """
     This function initializes the Gradient Boosting classifier model.
     """
-    if default_parm:
-        model_gradientBoosting = GradientBoostingClassifier()
-    else:
-        model_gradientBoosting = GradientBoostingClassifier(n_estimators=100, learning_rate=0.1, max_depth=3)
+    config = load_config()
+    params = config['GradientBoostingClassifier']['default'] if default_parm else config['GradientBoostingClassifier']['custom']
+    model_gradientBoosting = GradientBoostingClassifier(**params)
     return model_gradientBoosting
 
 
@@ -74,10 +67,9 @@ def init_lightGBM(default_parm=True):
     """
     This function initializes the LightGBM classifier model.
     """
-    if default_parm:
-        model_lgbm = LGBMClassifier()
-    else:
-        model_lgbm = LGBMClassifier(boosting_type='gbdt', num_leaves=31, max_depth=30, learning_rate=0.1, n_estimators=300)
+    config = load_config()
+    params = config['LGBMClassifier']['default'] if default_parm else config['LGBMClassifier']['custom']
+    model_lgbm = LGBMClassifier(**params)
     return model_lgbm
 
 
@@ -85,10 +77,9 @@ def init_linearDiscriminantAnalysis(default_parm=True):
     """
     This function initializes the Linear Discriminant Analysis classifier model.
     """
-    if default_parm:
-        model_linearDiscriminantAnalysis = LinearDiscriminantAnalysis()
-    else:
-        model_linearDiscriminantAnalysis = LinearDiscriminantAnalysis(solver='svd', shrinkage=None)
+    config = load_config()
+    params = config['LinearDiscriminantAnalysis']['default'] if default_parm else config['LinearDiscriminantAnalysis']['custom']
+    model_linearDiscriminantAnalysis = LinearDiscriminantAnalysis(**params)
     return model_linearDiscriminantAnalysis
 
 
@@ -96,10 +87,9 @@ def init_logisticRegression(default_parm=True):
     """
     This function initializes the Logistic Regression classifier model.
     """
-    if default_parm:
-        model_logisticRegression = LogisticRegression()
-    else:
-        model_logisticRegression = LogisticRegression(solver='lbfgs', max_iter=100, random_state=42)
+    config = load_config()
+    params = config['LogisticRegression']['default'] if default_parm else config['LogisticRegression']['custom']
+    model_logisticRegression = LogisticRegression(**params)
     return model_logisticRegression
 
 
@@ -107,10 +97,9 @@ def init_MLPClassifier(default_parm=True):
     """
     This function initializes the Multi-layer Perceptron classifier model.
     """
-    if default_parm:
-        model_MLPClassifier = MLPClassifier()
-    else:
-        model_MLPClassifier = MLPClassifier(hidden_layer_sizes=(100,), activation='relu', solver='adam', max_iter=200)
+    config = load_config()
+    params = config['MLPClassifier']['default'] if default_parm else config['MLPClassifier']['custom']
+    model_MLPClassifier = MLPClassifier(**params)
     return model_MLPClassifier
 
 
@@ -118,10 +107,9 @@ def init_randomForest(default_parm=True):
     """
     This function initializes the Random Forest classifier model.
     """
-    if default_parm:
-        model_randomForest = RandomForestClassifier()
-    else:
-        model_randomForest = RandomForestClassifier(n_estimators=100, max_depth=None, random_state=42)
+    config = load_config()
+    params = config['RandomForestClassifier']['default'] if default_parm else config['RandomForestClassifier']['custom']
+    model_randomForest = RandomForestClassifier(**params)
     return model_randomForest
 
 
@@ -129,10 +117,9 @@ def init_XGBoost(default_parm=True):
     """
     This function initializes the XGBoost classifier model.
     """
-    if default_parm:
-        model_XGBoost = XGBClassifier()
-    else:
-        model_XGBoost = XGBClassifier(learning_rate=0.1, n_estimators=100, max_depth=3, random_state=42)
+    config = load_config()
+    params = config['XGBClassifier']['default'] if default_parm else config['XGBClassifier']['custom']
+    model_XGBoost = XGBClassifier(**params)
     return model_XGBoost
 
 
@@ -176,6 +163,12 @@ class Models():
             # 从 self 的属性中获取模型
             model = getattr(self, name)
             self.models_list.append(model)
+
+    def get_all_models(self):
+        """
+        This method returns all models.
+        """
+        return self.models_list
 
     def train_all_models(self, X_train, Y_train, method):
         """
@@ -228,7 +221,7 @@ def calculate_metrics(model, X_test, Y_test) -> list:
 
 class Models_trained():
 
-    def __init__(self,path='models'):
+    def __init__(self, path='models'):
         self.models_dict = {}  # 字典，用于存储方法名和对应的模型列表
         # 遍历 models 文件夹及其所有子文件夹
         for root, dirs, files in os.walk(path):
