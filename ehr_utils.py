@@ -1,3 +1,4 @@
+import pickle
 from typing import List
 from sklearn.model_selection import train_test_split
 import os
@@ -13,7 +14,7 @@ import pandas as pd
 from sklearn.utils import resample
 
 
-def get_train_test(data_path, name='roc_pr', train_size=0.8, random_state=42) -> List:
+def get_train_test(data_path, train_size=0.8, random_state=42) -> List:
     """
     自定义划分函数,将df直接划分为训练集和测试集。
     """
@@ -21,6 +22,7 @@ def get_train_test(data_path, name='roc_pr', train_size=0.8, random_state=42) ->
     y = df.pop('have_stone')
     x = df
     return train_test_split(x, y, train_size=train_size, random_state=random_state, stratify=y)
+
 
 def get_prediction_results(model, X_test):
     """
@@ -30,7 +32,8 @@ def get_prediction_results(model, X_test):
     Y_pred = model.predict(X_test)
     return Y_prob, Y_pred
 
-def plot_roc_pr_curves(y_true, y_proba, model_name='model') -> None:
+
+def plot_roc_pr_curves(y_true, y_proba, model_name='model', fig_name='test') -> None:
     """
     绘制ROC曲线和Precision-Recall曲线。输入为真实标签和预测概率,和预测标签。
     """
@@ -46,7 +49,7 @@ def plot_roc_pr_curves(y_true, y_proba, model_name='model') -> None:
     axs[0].plot([0, 1], [0, 1], color='#666666', lw=1, linestyle='--')
     axs[0].set_xlabel('False Positive Rate')
     axs[0].set_ylabel('True Positive Rate')
-    axs[0].set_title('Receiver Operating Characteristic (ROC) Curve')
+    axs[0].set_title(f'Receiver Operating Characteristic (ROC) Curve from {fig_name}')
     axs[0].legend(loc="lower right")
     axs[0].set_xlim([0, 1])
     axs[0].set_ylim([0, 1])
@@ -55,7 +58,7 @@ def plot_roc_pr_curves(y_true, y_proba, model_name='model') -> None:
     axs[1].plot(recall, precision, color='darkorange', lw=2, label=f'PR curve (area = {auprc:.2f})')
     axs[1].set_xlabel('Recall')
     axs[1].set_ylabel('Precision')
-    axs[1].set_title('Precision-Recall (PR) Curve')
+    axs[1].set_title(f'Precision-Recall (PR) Curve from {fig_name}')
     axs[1].legend(loc="lower left")
     axs[1].set_xlim([0, 1])
     axs[1].set_ylim([0, 1])
@@ -68,7 +71,7 @@ def plot_roc_pr_curves(y_true, y_proba, model_name='model') -> None:
     print(f"AUPRC: {auprc:.4f}")
 
 
-def eval_model(y_true, y_pred, y_proba) -> list:
+def eval_model(y_true, y_proba, y_pred) -> list:
     # 计算指标
     auc_score = roc_auc_score(y_true, y_proba)
     accuracy = accuracy_score(y_true, y_pred)
@@ -77,13 +80,13 @@ def eval_model(y_true, y_pred, y_proba) -> list:
     ppv = precision_score(y_true, y_pred)
     npv = precision_score(y_true, y_pred, pos_label=0)
     f1 = f1_score(y_true, y_pred)
-    y_true=np.array(y_true)
+    y_true = np.array(y_true)
     # Bootstrap 计算 AUC 的 95% 置信区间
-    n_iterations = 100
+    n_iterations = 20
     auc_scores = []
     for _ in range(n_iterations):
         # 生成随机索引（有放回抽样）
-        indices = resample(np.arange(len(y_true)), n_samples=int(len(y_true)*0.5), replace=True)
+        indices = resample(np.arange(len(y_true)), n_samples=int(len(y_true) * 0.5), replace=True)
         score = roc_auc_score(y_true[indices], y_proba[indices])
         auc_scores.append(score)
 
@@ -112,5 +115,30 @@ def test_plot():
     plot_roc_pr_curves(y_test, y_proba, model_name='test')
 
 
+def load_model(path):
+    with open(path, 'rb') as f:
+        model = pickle.load(f)
+    return model
+
+
+def get_all_trained_models(path):
+    """
+    获取所有训练好的模型。
+    """
+    #获取path下的所有模型
+
+    model_files = os.listdir(path)
+    model_paths = sorted([os.path.join(path, f) for f in model_files])
+    print(f"检测到 {len(model_paths)} 个模型：{model_paths}")
+
+    load_models_list = []
+    for model_path in model_paths:
+        model = load_model(model_path)
+        load_models_list.append(model)
+        # 这里可以添加对模型的进一步处理或评估
+    return load_models_list
+
+
 if __name__ == "__main__":
-    test_plot()
+    # test_plot()
+    get_all_trained_models('trained_models/drop')  # 假设模型存储在 'models' 目录中
