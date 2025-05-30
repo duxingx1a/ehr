@@ -1,51 +1,29 @@
-<<<<<<< HEAD
-import pandas as pd
+from ehr_models import *
 import ehr_utils
-# test_file_path = 'data_clean/Train-test-dataset_Ver-electronic-haveoutliers_xgb.csv'
-test_file_path = 'data_clean/Train-test-dataset_Ver-electronic-haveoutliers-delete8cols_mean_mode.csv'
-df = pd.read_csv(test_file_path)
-X_train, X_test, Y_train, Y_test = ehr_utils.get_train_test(df, train_size=0.8, random_state=42)
-import xgboost as xgb
-from sklearn.metrics import accuracy_score, classification_report
-from sklearn.metrics import roc_curve, auc, f1_score
+import pandas as pd
+# file_path=r'C:\Users\ydl\Desktop\ehr0528\data_cleaned\ver-noelectrolyte-logtransform_bayesian.csv'
+file_path = 'data_cleaned/ver-noelectrolyte-logtransform_mean.csv'
+# file_path = r'C:\Users\ydl\Desktop\ehr0528\data_cleaned\ver-noelectrolyte-logtransform_drop.csv'
 
-model = xgb.XGBClassifier(n_estimators=800,
-                          max_depth=8,
-                          learning_rate=0.01,
-                          eval_metric='auc',
-                          device='gpu',
-                          subsample=1.0,
-                          colsample_bytree=0.5,
-                          reg_lambda=0.9953311090514885,
-                          reg_alpha=0.4581043332068245,
-                          scale_pos_weight=8.0)
+X_train, X_test, Y_train, Y_test = ehr_utils.get_train_test(file_path, train_size=0.8, random_state=42)
+
+## 需要测试哪个模型就取消注释对应的行,需要默认参数default=True，需要优化后的参数 默认=false
+default = True
+# model = init_adaBoost(default_parm=default)
+model = init_decisionTree(default_parm=default)
+# model = init_gaussianNB(default_parm=default)
+# model = init_gradientBoosting(default_parm=default)
+# model = init_lightGBM(default_parm=default)
+# model = init_linearDiscriminantAnalysis(default_parm=default)
+# model = init_logisticRegression(default_parm=default)
+# model = init_MLPClassifier(default_parm=default)
+# model = init_randomForest(default_parm=default)
+# model = init_XGBoost(default_parm=default)
 
 model.fit(X_train, Y_train)
-Y_pred_proba,Y_pred = ehr_utils.get_prediction_results(model,X_test)
-print(ehr_utils.eval_model(Y_test, Y_pred, Y_pred_proba))
-=======
-import pandas as pd
-import ehr_utils
-# test_file_path = 'data_clean/Train-test-dataset_Ver-electronic-haveoutliers_xgb.csv'
-test_file_path = 'data_clean/Train-test-dataset_Ver-electronic-haveoutliers-delete8cols_mean_mode.csv'
-df = pd.read_csv(test_file_path)
-X_train, X_test, Y_train, Y_test = ehr_utils.get_train_test(df, train_size=0.8, random_state=42)
-import xgboost as xgb
-from sklearn.metrics import accuracy_score, classification_report
-from sklearn.metrics import roc_curve, auc, f1_score
-
-model = xgb.XGBClassifier(n_estimators=800,
-                          max_depth=8,
-                          learning_rate=0.01,
-                          eval_metric='auc',
-                          device='gpu',
-                          subsample=1.0,
-                          colsample_bytree=0.5,
-                          reg_lambda=0.9953311090514885,
-                          reg_alpha=0.4581043332068245,
-                          scale_pos_weight=8.0)
-
-model.fit(X_train, Y_train)
-Y_pred_proba,Y_pred = ehr_utils.get_prediction_results(model,X_test)
-print(ehr_utils.eval_model(Y_test, Y_pred, Y_pred_proba))
->>>>>>> f41536c6cf95e7503c9ebb38252650a8f55fb017
+print("Model training completed.")
+Y_prob, Y_pred = ehr_utils.get_prediction_results(model, X_test)
+Ytrain_prob, Ytrain_pred = ehr_utils.get_prediction_results(model, X_train)
+ehr_utils.plot_roc_pr_curves(Y_train, Ytrain_prob, 'dt')
+ehr_utils.plot_roc_pr_curves(Y_test, Y_prob, 'xgb')
+ehr_utils.eval_model(Y_test,Y_prob, Y_pred)

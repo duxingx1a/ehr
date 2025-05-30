@@ -39,9 +39,9 @@ def train_and_save_all_models(file_path,method='default'):
 
 # 调用主函数
 if __name__ == "__main__":
-    file_path_drop = r'data_cleaned\ver-noelectrolyte-logtransform_drop.csv'
-    file_path_mean = r'data_cleaned\ver-noelectrolyte-logtransform_mean.csv'
-    file_path_bayesian = r'data_cleaned\ver-noelectrolyte-logtransform_bayesian.csv'
+    file_path_drop = 'data_cleaned/ver-noelectrolyte-logtransform_drop.csv'
+    file_path_mean = 'data_cleaned/ver-noelectrolyte-logtransform_mean.csv'
+    file_path_bayesian = 'data_cleaned/ver-noelectrolyte-logtransform_bayesian.csv'
     train_and_save_all_models(file_path_drop,method='drop')
     train_and_save_all_models(file_path_mean,method='mean')
     train_and_save_all_models(file_path_bayesian,method='bayesian')

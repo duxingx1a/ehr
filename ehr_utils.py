@@ -17,6 +17,12 @@ from sklearn.utils import resample
 def get_train_test(data_path, train_size=0.8, random_state=42) -> List:
     """
     自定义划分函数,将df直接划分为训练集和测试集。
+    
+    - data_path: 数据文件的路径
+    - train_size: 训练集的比例，默认为0.8
+    - random_state: 随机种子，默认为42
+    
+    返回X_train,X_test,Y_train,Y_test。
     """
     df = pd.read_csv(data_path)
     y = df.pop('have_stone')
@@ -24,18 +30,30 @@ def get_train_test(data_path, train_size=0.8, random_state=42) -> List:
     return train_test_split(x, y, train_size=train_size, random_state=random_state, stratify=y)
 
 
-def get_prediction_results(model, X_test):
+def get_prediction_results(model: Any, X_test: pd.DataFrame) -> tuple[np.ndarray, np.ndarray]:
     """
     返回模型的预测概率和预测结果。
+    
+    - model: 训练好的模型
+    - X_test: 测试集特征
+    
+    返回预测概率和预测标签。
     """
     Y_prob = model.predict_proba(X_test)[:, 1]
     Y_pred = model.predict(X_test)
     return Y_prob, Y_pred
 
 
-def plot_roc_pr_curves(y_true, y_proba, model_name='model', fig_name='test') -> None:
+def plot_roc_pr_curves(y_true: np.ndarray, y_proba: np.ndarray, model_name: str = 'model', fig_name: str = 'test') -> None:
     """
-    绘制ROC曲线和Precision-Recall曲线。输入为真实标签和预测概率,和预测标签。
+    绘制ROC曲线和Precision-Recall曲线。
+    
+    - y_true: 真实标签
+    - y_proba: 预测概率
+    - model_name: 模型名称，用于保存图像文件
+    - fig_name: 图像标题，用于标识数据是训练集还是测试集
+    
+    返回None，绘制的图像将保存到results_fig/roc_pr_curve_{model_name}.png目录下。
     """
     fig, axs = plt.subplots(1, 2, figsize=(12, 5))
     #计算指标
@@ -71,9 +89,18 @@ def plot_roc_pr_curves(y_true, y_proba, model_name='model', fig_name='test') -> 
     print(f"AUPRC: {auprc:.4f}")
 
 
-def eval_model(y_true, y_proba, y_pred) -> list:
+def eval_model(y_true, y_prob, y_pred) -> list:
+    """
+    评估模型性能，返回各项指标的值包括AUC、准确率、灵敏度、特异度、PPV、NPV和F1分数。
+    
+    - y_true: 真实标签
+    - y_prob: 预测概率
+    - y_pred: 预测标签
+    
+    返回一个包含各项指标的列表。
+    """
     # 计算指标
-    auc_score = roc_auc_score(y_true, y_proba)
+    auc_score = roc_auc_score(y_true, y_prob)
     accuracy = accuracy_score(y_true, y_pred)
     sensitivity = recall_score(y_true, y_pred)
     specificity = recall_score(y_true, y_pred, pos_label=0)
@@ -87,7 +114,7 @@ def eval_model(y_true, y_proba, y_pred) -> list:
     for _ in range(n_iterations):
         # 生成随机索引（有放回抽样）
         indices = resample(np.arange(len(y_true)), n_samples=int(len(y_true) * 0.5), replace=True)
-        score = roc_auc_score(y_true[indices], y_proba[indices])
+        score = roc_auc_score(y_true[indices], y_prob[indices])
         auc_scores.append(score)
 
     # 排序后计算置信区间

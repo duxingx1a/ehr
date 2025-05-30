@@ -9,12 +9,12 @@ import datetime
 import ehr_utils
 from sklearn.metrics import auc, average_precision_score, precision_recall_curve, roc_curve
 
-plt.rcParams["font.family"] = ['monospace']  # 指定默认字体
-plt.rcParams["font.monospace"].insert(0, 'Ubuntu Sans Mono')  # 指定默认字体
+plt.rcParams["font.family"] = ['monospace']  # 设置字体族为衬线字体
+plt.rcParams["font.monospace"] = ['Consolas']  # 指定具体的衬线字体为 Consolas
 plt.rcParams['axes.unicode_minus'] = False  # 解决保存图像是负号'-'显示为方块的问题
 
 
-def plot_all_models_roc_pr(trained_models: List[Any], X_test: pd.DataFrame, Y_test: pd.Series, fill_method_name: str) -> None:
+def plot_all_models_roc_pr(trained_models: List[Any], X_test: pd.DataFrame, Y_test: pd.Series, fill_method_name: str,opt: str = 'opt') -> None:
     """
     绘制所有模型的ROC曲线和PR曲线，并将图片保存到result_fig下的roc_pr_curves_all_{月日}.png。
     
@@ -22,8 +22,9 @@ def plot_all_models_roc_pr(trained_models: List[Any], X_test: pd.DataFrame, Y_te
     - X_test: 测试集特征
     - Y_test: 测试集标签
     - fill_method_name: 填充方法名称，用于区分不同的数据集
+    - opt: 优化选项，默认为'opt'，可选值包括'opt'和'default'。分别为优化参数的模型和默认参数的模型
     """
-    fig, ax = plt.subplots(1, 2, figsize=(12, 6))
+    fig, ax = plt.subplots(1, 2, figsize=(14, 6), dpi=300)
     # 颜色表
     C = ['#f98e62', '#d6eef4', '#f0c184', '#f6ebb1', '#929fc9', '#f8fbcb', '#ef8c67', '#8074ca', '#a5d954', '#b44763']
     names = ["ADB", "DT", "GNB", "GB", "LGBM", "LDA", "LR", "MLP", "RF", "XGB"]
@@ -71,8 +72,8 @@ def plot_all_models_roc_pr(trained_models: List[Any], X_test: pd.DataFrame, Y_te
     ax[1].set_ylabel('Precision')
     ax[1].legend(loc='best')
     plt.tight_layout()
-    fig.savefig(f'results_fig/roc_pr_curves_all_{fill_method_name}_{datetime.datetime.now().strftime("%m%d")}.png')
-    plt.show()
+    fig.savefig(f'results_fig/roc_pr_curves_all_{opt}_{fill_method_name}_{datetime.datetime.now().strftime("%m%d")}.png')
+    # plt.show()
 
 
 def eval_all_models_to_excel(trained_models: List[Any], X_test: pd.DataFrame, Y_test: pd.Series, fill_method_type: str, opt: str = 'opt') -> None:
@@ -110,26 +111,26 @@ if __name__ == '__main__':
     #使用什么数据  可选 mean drop  bayesian
     fill_methods = ['drop', 'mean', 'bayesian']
     #使用什么优化选项 可选 opt default
-    opt = 'default'
+    opt = 'opt'
     #是否重新计算结果
     re_calculate = True
+    re_plot = False
     # 评估所有模型
     for fill_method in fill_methods:
-        models_list = ehr_utils.get_all_trained_models(f'trained_models_default/{fill_method}')
+        # 评估trained_models_{默认or优化参数}/{控制填充方法}下的所有模型，将其保存到xlsx中的一个sheet中
+        models_list = ehr_utils.get_all_trained_models(f'trained_models_{opt}/{fill_method}')
         file_path = f'data_cleaned/ver-noelectrolyte-logtransform_{fill_method}.csv'
         X_train, X_test, Y_train, Y_test = ehr_utils.get_train_test(file_path)
-        models_list = ehr_utils.get_all_trained_models(f'trained_models_{opt}/{fill_method}')
-        ##评估trained_models_{控制填充方法}下的所有模型，将其保存到xlsx中的一个sheet中
         if re_calculate:
             eval_all_models_to_excel(models_list, X_test, Y_test, fill_method, opt=opt)
-            print(f"计算表格评估结果并保存到result_tables/model_metrics_{opt}.xlsx中")
+            print(f"\n{fill_method}方法表格评估结果完成，保存到result_tables/model_metrics_{opt}.xlsx中")
         else:
-            print(f"跳过表格评估结果")
-            continue
-        if re_calculate:
+            print(f"\n跳过表格评估结果")
+        if re_plot:
             # 绘制ROC和PR曲线
-            plot_all_models_roc_pr(models_list, X_test, Y_test,fill_method)
-            print(f"绘制ROC和PR曲线并保存到results_fig/roc_pr_curves_all_{opt}.png")
+            plot_all_models_roc_pr(models_list, X_test, Y_test, fill_method, opt=opt)
+            print(f"\n绘制ROC和PR曲线并保存到results_fig/roc_pr_curves_all_{opt}_{fill_method}.png")
         else:
-            print(f"跳过ROC和PR曲线绘制")
-            continue
+            print(f"\n跳过ROC和PR曲线绘制")
+    print("\n所有模型评估完成！")
+    print(f"请查看result_tables/model_metrics_{opt}.xlsx和results_fig/roc_pr_curves_all_{opt}.png文件。")

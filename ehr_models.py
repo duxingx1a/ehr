@@ -1,4 +1,3 @@
-from datetime import datetime
 import os
 import pickle
 from typing import Any
@@ -12,6 +11,12 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.ensemble import RandomForestClassifier
 from lightgbm import LGBMClassifier
 from xgboost import XGBClassifier
+
+#对外暴露的函数
+__all__ = [
+    "init_adaBoost", "init_decisionTree", "init_gaussianNB", "init_gradientBoosting", "init_lightGBM", "init_linearDiscriminantAnalysis", "init_logisticRegression",
+    "init_MLPClassifier", "init_randomForest", "init_XGBoost"
+]
 
 
 def init_adaBoost(default_parm: bool = True) -> AdaBoostClassifier:
@@ -34,12 +39,12 @@ def init_decisionTree(default_parm: bool = True) -> DecisionTreeClassifier:
     如果为True，则使用默认参数初始化模型；如果为False，则使用自定义参数初始化模型。
     """
     if default_parm:
-        model_decisionTree = DecisionTreeClassifier()
+        model_decisionTree = DecisionTreeClassifier(max_depth=5,class_weight='balanced', random_state=42)
     else:
         model_decisionTree = DecisionTreeClassifier(
             class_weight='balanced',
             criterion='gini',
-            max_depth=8,
+            max_depth=12,
             min_samples_leaf=1,
             min_samples_split=10,
         )
@@ -165,12 +170,12 @@ def init_XGBoost(default_parm: bool = True) -> XGBClassifier:
     return model_XGBoost
 
 
-def save_model(model: Any, model_name: str, auc: float = 0, method: str = 'default', opt: str = 'opt') -> None:
+def save_model(model: Any, model_name: str, auc: float = 0, method: str = 'mean', opt: str = 'opt') -> None:
     """
     model: 需要保存的模型
     model_name: 模型名称
     auc: 模型的AUC值
-    method: 数据清洗方法
+    method: 数据清洗方法, 默认为'mean'，可选值包括'mean'、'median'、'mode'等
     opt: 优化选项，默认为'opt'，可选值包括'opt'和'default'。分别为优化参数的模型和默认参数的模型
     该函数将模型保存到指定目录下，目录结构为 trained_models_{opt}/{method}/
     """
