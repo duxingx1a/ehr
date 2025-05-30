@@ -25,7 +25,7 @@ def train_and_save_all_models(file_path,method='default'):
     # 遍历每个模型，训练并保存
     for model_name, init_func in tqdm(model_initializers.items()):
         print(f"Training {model_name}...")
-        model = init_func(default_parm=False)  # 使用默认参数
+        model = init_func(default_parm=False) 
         model.fit(X_train, Y_train)
         print(f"Model training completed for {model_name}.")
 

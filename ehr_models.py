@@ -20,7 +20,7 @@ def init_adaBoost(default_parm=True):
     if default_parm:
         model_adaboost = AdaBoostClassifier()
     else:
-        model_adaboost = AdaBoostClassifier(estimator=DecisionTreeClassifier(class_weight='balanced',), n_estimators=200, learning_rate=1.0, random_state=42)
+        model_adaboost = AdaBoostClassifier(estimator=RandomForestClassifier(max_depth=1,n_jobs=-1))
     return model_adaboost
 
 
@@ -46,7 +46,7 @@ def init_gaussianNB(default_parm=True):
     This function initializes the Gaussian Naive Bayes classifier model.
     """
     if default_parm:
-        model_gaussianNB = GaussianNB()
+        model_gaussianNB = GaussianNB(priors=[0.3, 0.7])
     else:
         model_gaussianNB = GaussianNB(priors=[0.3, 0.7], var_smoothing=1e-11)
     return model_gaussianNB
@@ -68,9 +68,9 @@ def init_lightGBM(default_parm=True):
     This function initializes the LightGBM classifier model.
     """
     if default_parm:
-        model_lgbm = LGBMClassifier()
+        model_lgbm = LGBMClassifier(sample_weight=4.0)
     else:
-        model_lgbm = LGBMClassifier(boosting_type='gbdt', num_leaves=96, max_depth=3, learning_rate=0.11, n_estimators=400)
+        model_lgbm = LGBMClassifier(boosting_type='gbdt', num_leaves=96, max_depth=3, learning_rate=0.11, n_estimators=400, class_weight={0: 1, 1: 5})
     return model_lgbm
 
 
@@ -79,9 +79,9 @@ def init_linearDiscriminantAnalysis(default_parm=True):
     This function initializes the Linear Discriminant Analysis classifier model.
     """
     if default_parm:
-        model_linearDiscriminantAnalysis = LinearDiscriminantAnalysis()
+        model_linearDiscriminantAnalysis = LinearDiscriminantAnalysis(priors=[0.3, 0.7])
     else:
-        model_linearDiscriminantAnalysis = LinearDiscriminantAnalysis(solver='svd', shrinkage=None)
+        model_linearDiscriminantAnalysis = LinearDiscriminantAnalysis(solver='svd', shrinkage=None, priors=[0.3, 0.7])
     return model_linearDiscriminantAnalysis
 
 
@@ -90,9 +90,9 @@ def init_logisticRegression(default_parm=True):
     This function initializes the Logistic Regression classifier model.
     """
     if default_parm:
-        model_logisticRegression = LogisticRegression()
+        model_logisticRegression = LogisticRegression(class_weight='balanced')
     else:
-        model_logisticRegression = LogisticRegression(C=8.07, solver='liblinear', max_iter=100, random_state=42)
+        model_logisticRegression = LogisticRegression(C=8.07, solver='liblinear', max_iter=100, random_state=42, class_weight='balanced')
     return model_logisticRegression
 
 
