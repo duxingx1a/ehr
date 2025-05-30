@@ -1,6 +1,7 @@
 from datetime import datetime
 import os
 import pickle
+from typing import Any
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import GradientBoostingClassifier
@@ -13,20 +14,24 @@ from lightgbm import LGBMClassifier
 from xgboost import XGBClassifier
 
 
-def init_adaBoost(default_parm=True):
+def init_adaBoost(default_parm: bool = True) -> AdaBoostClassifier:
     """
-    This function initializes the AdaBoost classifier model.
+    用于初始化AdaBoost分类器模型的函数。
+    default_parm: 是否使用默认参数，默认为True。
+    如果为True，则使用默认参数初始化模型；如果为False，则使用自定义参数初始化模型。
     """
     if default_parm:
         model_adaboost = AdaBoostClassifier()
     else:
-        model_adaboost = AdaBoostClassifier(estimator=RandomForestClassifier(max_depth=1,n_jobs=-1))
+        model_adaboost = AdaBoostClassifier(estimator=RandomForestClassifier(max_depth=1, n_jobs=-1))
     return model_adaboost
 
 
-def init_decisionTree(default_parm=True):
+def init_decisionTree(default_parm: bool = True) -> DecisionTreeClassifier:
     """
-    This function initializes the Decision Tree classifier model.
+    用于初始化决策树分类器模型的函数。
+    default_parm: 是否使用默认参数，默认为True。
+    如果为True，则使用默认参数初始化模型；如果为False，则使用自定义参数初始化模型。
     """
     if default_parm:
         model_decisionTree = DecisionTreeClassifier()
@@ -41,9 +46,11 @@ def init_decisionTree(default_parm=True):
     return model_decisionTree
 
 
-def init_gaussianNB(default_parm=True):
+def init_gaussianNB(default_parm: bool = True) -> GaussianNB:
     """
-    This function initializes the Gaussian Naive Bayes classifier model.
+    用于初始化高斯朴素贝叶斯分类器模型的函数。
+    default_parm: 是否使用默认参数，默认为True。
+    如果为True，则使用默认参数初始化模型；如果为False，则使用自定义参数初始化模型。
     """
     if default_parm:
         model_gaussianNB = GaussianNB(priors=[0.3, 0.7])
@@ -52,9 +59,11 @@ def init_gaussianNB(default_parm=True):
     return model_gaussianNB
 
 
-def init_gradientBoosting(default_parm=True):
+def init_gradientBoosting(default_parm: bool = True) -> GradientBoostingClassifier:
     """
-    This function initializes the Gradient Boosting classifier model.
+    用于初始化梯度提升分类器模型的函数。
+    default_parm: 是否使用默认参数，默认为True。
+    如果为True，则使用默认参数初始化模型；如果为False，则使用自定义参数初始化模型。
     """
     if default_parm:
         model_gradientBoosting = GradientBoostingClassifier()
@@ -63,9 +72,11 @@ def init_gradientBoosting(default_parm=True):
     return model_gradientBoosting
 
 
-def init_lightGBM(default_parm=True):
+def init_lightGBM(default_parm: bool = True) -> LGBMClassifier:
     """
-    This function initializes the LightGBM classifier model.
+    用于初始化LightGBM分类器模型的函数。
+    default_parm: 是否使用默认参数，默认为True。
+    如果为True，则使用默认参数初始化模型；如果为False，则使用自定义参数初始化模型。
     """
     if default_parm:
         model_lgbm = LGBMClassifier(sample_weight=4.0)
@@ -74,9 +85,11 @@ def init_lightGBM(default_parm=True):
     return model_lgbm
 
 
-def init_linearDiscriminantAnalysis(default_parm=True):
+def init_linearDiscriminantAnalysis(default_parm: bool = True) -> LinearDiscriminantAnalysis:
     """
-    This function initializes the Linear Discriminant Analysis classifier model.
+    用于初始化线性判别分析分类器模型的函数。
+    default_parm: 是否使用默认参数，默认为True。
+    如果为True，则使用默认参数初始化模型；如果为False，则使用自定义参数初始化模型。
     """
     if default_parm:
         model_linearDiscriminantAnalysis = LinearDiscriminantAnalysis(priors=[0.3, 0.7])
@@ -85,9 +98,11 @@ def init_linearDiscriminantAnalysis(default_parm=True):
     return model_linearDiscriminantAnalysis
 
 
-def init_logisticRegression(default_parm=True):
+def init_logisticRegression(default_parm: bool = True) -> LogisticRegression:
     """
-    This function initializes the Logistic Regression classifier model.
+    用于初始化逻辑回归分类器模型的函数。
+    default_parm: 是否使用默认参数，默认为True。
+    如果为True，则使用默认参数初始化模型；如果为False，则使用自定义参数初始化模型。
     """
     if default_parm:
         model_logisticRegression = LogisticRegression(class_weight='balanced')
@@ -96,9 +111,11 @@ def init_logisticRegression(default_parm=True):
     return model_logisticRegression
 
 
-def init_MLPClassifier(default_parm=True):
+def init_MLPClassifier(default_parm: bool = True) -> MLPClassifier:
     """
-    This function initializes the Multi-layer Perceptron classifier model.
+    用于初始化多层感知机分类器模型的函数。
+    default_parm: 是否使用默认参数，默认为True。
+    如果为True，则使用默认参数初始化模型；如果为False，则使用自定义参数初始化模型。
     """
     if default_parm:
         model_MLPClassifier = MLPClassifier()
@@ -111,9 +128,11 @@ def init_MLPClassifier(default_parm=True):
     return model_MLPClassifier
 
 
-def init_randomForest(default_parm=True):
+def init_randomForest(default_parm: bool = True) -> RandomForestClassifier:
     """
-    This function initializes the Random Forest classifier model.
+    用于初始化随机森林分类器模型的函数。
+    default_parm: 是否使用默认参数，默认为True。
+    如果为True，则使用默认参数初始化模型；如果为False，则使用自定义参数初始化模型。
     """
     if default_parm:
         model_randomForest = RandomForestClassifier(n_jobs=-1)
@@ -122,9 +141,11 @@ def init_randomForest(default_parm=True):
     return model_randomForest
 
 
-def init_XGBoost(default_parm=True):
+def init_XGBoost(default_parm: bool = True) -> XGBClassifier:
     """
-    This function initializes the XGBoost classifier model.
+    用于初始化XGBoost分类器模型的函数。
+    default_parm: 是否使用默认参数，默认为True。
+    如果为True，则使用默认参数初始化模型；如果为False，则使用自定义参数初始化模型。
     """
     if default_parm:
         model_XGBoost = XGBClassifier()
@@ -144,11 +165,16 @@ def init_XGBoost(default_parm=True):
     return model_XGBoost
 
 
-def save_model(model, model_name, method='default', auc=None):
+def save_model(model: Any, model_name: str, auc: float = 0, method: str = 'default', opt: str = 'opt') -> None:
     """
-    This function saves the trained model to a file.
+    model: 需要保存的模型
+    model_name: 模型名称
+    auc: 模型的AUC值
+    method: 数据清洗方法
+    opt: 优化选项，默认为'opt'，可选值包括'opt'和'no_opt'。分别为优化参数的模型和默认参数的模型
+    该函数将模型保存到指定目录下，目录结构为 trained_models_{opt}/{method}/
     """
-    method_dir = os.path.join('trained_models', method)
+    method_dir = os.path.join(f'trained_models_{opt}', method)
     os.makedirs(method_dir, exist_ok=True)
     # 保存模型
     model_path = os.path.join(method_dir, f'{model_name}_{auc:0.2f}.pkl')
