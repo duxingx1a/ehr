@@ -7,10 +7,11 @@ from sklearn.experimental import enable_iterative_imputer
 from sklearn.impute import SimpleImputer,IterativeImputer
 import os
 
-def clean_data(df, method='mean'):
+def clean_data(df: pd.DataFrame, method: str = 'mean') -> pd.DataFrame:
     """
     清洗输入的dataframe中的空值，并且将标签转化为数值。清洗方式有：删除有缺失值的行、均值填充、贝叶斯岭回归填充缺失值。
     pd.DataFrame: 缺失值处理后的DataFrame
+    method: 清洗方法，默认为'mean'。可选值为'drop'、'mean'、'bayesian'。
     """
     df_clean = df.copy()
     df_clean['have_stone'] = df_clean['have_stone'].astype('int')  # 确保标签是整数类型
@@ -41,7 +42,7 @@ def clean_data(df, method='mean'):
         df_clean[target_column] = y
     return df_clean
 
-def is_already_cleaned(output_file_path):
+def is_already_cleaned(output_file_path: str) -> bool:
     """
     检查输出文件是否已经存在。
     如果文件已存在，返回 True；否则返回 False。

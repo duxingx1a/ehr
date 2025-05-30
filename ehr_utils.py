@@ -1,5 +1,5 @@
 import pickle
-from typing import List
+from typing import Any, List
 from sklearn.model_selection import train_test_split
 import os
 import numpy as np
@@ -115,15 +115,22 @@ def test_plot():
     plot_roc_pr_curves(y_test, y_proba, model_name='test')
 
 
-def load_model(path):
+def load_model(path: str) -> Any:
+    """
+    从指定路径加载模型。
+    path: 模型文件的路径
+    返回加载的模型对象。
+    """
     with open(path, 'rb') as f:
         model = pickle.load(f)
     return model
 
 
-def get_all_trained_models(path):
+def get_all_trained_models(path: str) -> List:
     """
     获取所有训练好的模型。
+    path: 模型存储的目录路径
+    返回一个包含所有加载模型的列表。
     """
     #获取path下的所有模型
 
@@ -135,10 +142,9 @@ def get_all_trained_models(path):
     for model_path in model_paths:
         model = load_model(model_path)
         load_models_list.append(model)
-        # 这里可以添加对模型的进一步处理或评估
     return load_models_list
 
 
 if __name__ == "__main__":
     # test_plot()
-    get_all_trained_models('trained_models/drop')  # 假设模型存储在 'models' 目录中
+    get_all_trained_models('trained_models_default/drop')  # 假设模型存储在 'models' 目录中

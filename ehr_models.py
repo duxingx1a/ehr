@@ -171,7 +171,7 @@ def save_model(model: Any, model_name: str, auc: float = 0, method: str = 'defau
     model_name: 模型名称
     auc: 模型的AUC值
     method: 数据清洗方法
-    opt: 优化选项，默认为'opt'，可选值包括'opt'和'no_opt'。分别为优化参数的模型和默认参数的模型
+    opt: 优化选项，默认为'opt'，可选值包括'opt'和'default'。分别为优化参数的模型和默认参数的模型
     该函数将模型保存到指定目录下，目录结构为 trained_models_{opt}/{method}/
     """
     method_dir = os.path.join(f'trained_models_{opt}', method)

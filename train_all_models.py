@@ -35,7 +35,7 @@ def train_and_save_all_models(file_path,method='default'):
         metrics = ehr_utils.eval_model(Y_test, Y_pred, Y_prob)
         print(f"Metrics for {model_name}: {metrics}")
         # 保存模型
-        ehr_models.save_model(model, model_name, method=method, auc=metrics[0])
+        ehr_models.save_model(model, model_name,  auc=metrics[0],method=method,opt='opt')
 
 # 调用主函数
 if __name__ == "__main__":

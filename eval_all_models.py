@@ -1,30 +1,36 @@
 """
 读取trained目录下所有模型的预测结果，并计算每个模型各个指标。保存到result_tables/model_metrics.xlsx文件中。
 """
+from typing import Any, List
 from matplotlib import pyplot as plt
 import pandas as pd
 import os
+import datetime
 import ehr_utils
+from sklearn.metrics import auc, average_precision_score, precision_recall_curve, roc_curve
 
 plt.rcParams["font.family"] = ['monospace']  # 指定默认字体
 plt.rcParams["font.monospace"].insert(0, 'Ubuntu Sans Mono')  # 指定默认字体
 plt.rcParams['axes.unicode_minus'] = False  # 解决保存图像是负号'-'显示为方块的问题
 
-from sklearn.metrics import auc, average_precision_score, precision_recall_curve, roc_curve
 
-
-def plot_all_models_roc_pr(trained_models, X_test, Y_test):
+def plot_all_models_roc_pr(trained_models: List[Any], X_test: pd.DataFrame, Y_test: pd.Series, fill_method_name: str) -> None:
+    """
+    绘制所有模型的ROC曲线和PR曲线，并将图片保存到result_fig下的roc_pr_curves_all_{月日}.png。
+    
+    - trained_models: 训练好的模型列表
+    - X_test: 测试集特征
+    - Y_test: 测试集标签
+    - fill_method_name: 填充方法名称，用于区分不同的数据集
+    """
     fig, ax = plt.subplots(1, 2, figsize=(12, 6))
     # 颜色表
     C = ['#f98e62', '#d6eef4', '#f0c184', '#f6ebb1', '#929fc9', '#f8fbcb', '#ef8c67', '#8074ca', '#a5d954', '#b44763']
-    # 为了输出对齐,出此下策， 后期再想解决办法
-    # names = ["ADB   ", "DT     ", "GNB   ", "GB     ", "LGBM ", "LDA    ", "LR      ", "MLP    ", "RF      ", "XGB   "]
     names = ["ADB", "DT", "GNB", "GB", "LGBM", "LDA", "LR", "MLP", "RF", "XGB"]
-    # 设置固定宽度
     width = 4
     # 使用 ljust() 对齐
     names = [name.ljust(width) for name in names]
-    # 遍历每个模型，计算AUC和PRC，并绘制曲线
+    # 遍历除xgb外每个模型，计算AUC和PRC，并绘制曲线
     for i, model in enumerate(trained_models[:-1]):
         # 预测概率
         y_pred_prob = model.predict_proba(X_test)[:, 1]
@@ -41,37 +47,44 @@ def plot_all_models_roc_pr(trained_models, X_test, Y_test):
         # 绘制PRC曲线
         name_width = 5
         ax[1].plot(recall, precision, label=f'{names[i]}({prc_score:.2f})', color=C[i], alpha=0.7, linewidth=1)
+    #xgb单独拎出来plot
     y_pred_prob = trained_models[-1].predict_proba(X_test)[:, 1]
-    # 计算ROC曲线
     fpr, tpr, _ = roc_curve(Y_test, y_pred_prob)
     auc_score = auc(fpr, tpr)
-    # 绘制AUC曲线
     ax[0].plot(fpr, tpr, label=f'{names[-1]}({auc_score:.2f})', color=C[-1], alpha=0.9, linewidth=2)
 
-    # 计算PRC曲线
     precision, recall, _ = precision_recall_curve(Y_test, y_pred_prob)
     prc_score = average_precision_score(Y_test, y_pred_prob)
-    # 绘制PRC曲线
     ax[1].plot(recall, precision, label=f'{names[-1]}({prc_score:.2f})', color=C[-1], alpha=0.9, linewidth=2)
     # 显示图表
     ax[0].set_ylim(0, 1)
     ax[0].set_xlim(0, 1)
-    ax[1].set_ylim(0, 1)
-    ax[1].set_xlim(0, 1)
     ax[0].set_title('ROC Curves')
     ax[0].set_xlabel('False Positive Rate')
     ax[0].set_ylabel('True Positive Rate')
     ax[0].legend(loc='lower right')
+
+    ax[1].set_ylim(0, 1)
+    ax[1].set_xlim(0, 1)
     ax[1].set_title('PRC Curves')
     ax[1].set_xlabel('Recall')
     ax[1].set_ylabel('Precision')
     ax[1].legend(loc='best')
     plt.tight_layout()
-    fig.savefig('results_fig/roc_pr_curves_all.png')
+    fig.savefig(f'results_fig/roc_pr_curves_all_{fill_method_name}_{datetime.datetime.now().strftime("%m%d")}.png')
     plt.show()
 
 
-def eval_all_models_to_excel(trained_models, X_test, Y_test, data_type):
+def eval_all_models_to_excel(trained_models: List[Any], X_test: pd.DataFrame, Y_test: pd.Series, fill_method_type: str, opt: str = 'opt') -> None:
+    """
+    评估所有模型的性能，并将结果保存到result_tables目录下model_metrics_{opt}_{月日}.xlsx文件中。
+    
+    - trained_models: 训练好的模型列表
+    - X_test: 测试集特征
+    - Y_test: 测试集标签
+    - fill_method_type: 填充方法类型，用于区分不同的数据集
+    - opt: 优化选项，默认为'opt'，可选值包括'opt'和'default'。分别为优化参数的模型和默认参数的模型
+    """
     metrics = []
     names = ["ADB", "DT", "GNB", "GB", "LGBM", "LDA", "LR", "MLP", "RF", "XGB"]
     for model in trained_models:
@@ -82,24 +95,41 @@ def eval_all_models_to_excel(trained_models, X_test, Y_test, data_type):
     df = pd.DataFrame(metrics, index=names, columns=['AUC', 'AUC_CI_Low', 'AUC_CI_High', 'Accuracy', 'Sensitivity', 'Specificity', 'PPV', 'NPV', 'F1'])
     os.makedirs('result_tables', exist_ok=True)
 
-    output_file = f'result_tables/model_metrics.xlsx'
+    output_file = f'result_tables/model_metrics_{opt}_{datetime.datetime.now().strftime("%m%d")}.xlsx'
     #如果不存在就创建新表
     if not os.path.exists(output_file):
         with pd.ExcelWriter(output_file, engine='openpyxl', mode='w') as writer:
-            df.to_excel(writer, sheet_name=data_type, index=True)
+            df.to_excel(writer, sheet_name=fill_method_type, index=True)
     #存在旧表就用追加模式
     else:
         with pd.ExcelWriter(output_file, engine='openpyxl', mode='a', if_sheet_exists='replace') as writer:
-            df.to_excel(writer, sheet_name=data_type, index=True)
+            df.to_excel(writer, sheet_name=fill_method_type, index=True)
 
 
 if __name__ == '__main__':
     #使用什么数据  可选 mean drop  bayesian
     fill_methods = ['drop', 'mean', 'bayesian']
+    #使用什么优化选项 可选 opt default
+    opt = 'default'
+    #是否重新计算结果
+    re_calculate = True
     # 评估所有模型
     for fill_method in fill_methods:
-        models_list = ehr_utils.get_all_trained_models(f'trained_models/{fill_method}')
+        models_list = ehr_utils.get_all_trained_models(f'trained_models_default/{fill_method}')
         file_path = f'data_cleaned/ver-noelectrolyte-logtransform_{fill_method}.csv'
         X_train, X_test, Y_train, Y_test = ehr_utils.get_train_test(file_path)
+        models_list = ehr_utils.get_all_trained_models(f'trained_models_{opt}/{fill_method}')
         ##评估trained_models_{控制填充方法}下的所有模型，将其保存到xlsx中的一个sheet中
-        eval_all_models_to_excel(models_list, X_test, Y_test, fill_method)
+        if re_calculate:
+            eval_all_models_to_excel(models_list, X_test, Y_test, fill_method, opt=opt)
+            print(f"计算表格评估结果并保存到result_tables/model_metrics_{opt}.xlsx中")
+        else:
+            print(f"跳过表格评估结果")
+            continue
+        if re_calculate:
+            # 绘制ROC和PR曲线
+            plot_all_models_roc_pr(models_list, X_test, Y_test,fill_method)
+            print(f"绘制ROC和PR曲线并保存到results_fig/roc_pr_curves_all_{opt}.png")
+        else:
+            print(f"跳过ROC和PR曲线绘制")
+            continue
