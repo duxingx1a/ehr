@@ -1,5 +1,6 @@
 import os
 import pickle
+from re import X
 from typing import Any
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.tree import DecisionTreeClassifier
@@ -39,7 +40,7 @@ def init_decisionTree(default_parm: bool = True) -> DecisionTreeClassifier:
     如果为True，则使用默认参数初始化模型；如果为False，则使用自定义参数初始化模型。
     """
     if default_parm:
-        model_decisionTree = DecisionTreeClassifier(max_depth=5,class_weight='balanced', random_state=42)
+        model_decisionTree = DecisionTreeClassifier(max_depth=5, class_weight='balanced', random_state=42)
     else:
         model_decisionTree = DecisionTreeClassifier(
             class_weight='balanced',
@@ -146,7 +147,7 @@ def init_randomForest(default_parm: bool = True) -> RandomForestClassifier:
     return model_randomForest
 
 
-def init_XGBoost(default_parm: bool = True) -> XGBClassifier:
+def init_XGBoost(default_parm: bool = True, **params) -> XGBClassifier:
     """
     用于初始化XGBoost分类器模型的函数。
     default_parm: 是否使用默认参数，默认为True。
@@ -163,10 +164,12 @@ def init_XGBoost(default_parm: bool = True) -> XGBClassifier:
                                       device='gpu',
                                       subsample=0.5,
                                       colsample_bytree=0.5,
+                                      random_state=42,
                                       reg_lambda=0.9,
                                       reg_alpha=0.45,
                                       scale_pos_weight=3.0)
-
+    if params:
+        model_XGBoost = XGBClassifier(**params)
     return model_XGBoost
 
 

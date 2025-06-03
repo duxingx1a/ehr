@@ -12,7 +12,7 @@ from sklearn.metrics import roc_curve, roc_auc_score, precision_recall_curve, av
     precision_score, recall_score, accuracy_score, auc
 import pandas as pd
 from sklearn.utils import resample
-
+import sys
 
 def get_train_test(data_path, train_size=0.8, random_state=42) -> List:
     """
@@ -160,8 +160,7 @@ def get_all_trained_models(path: str) -> List:
     返回一个包含所有加载模型的列表。
     """
     #获取path下的所有模型
-
-    model_files = os.listdir(path)
+    model_files = [f for f in os.listdir(path) if f.endswith('.pkl')]
     model_paths = sorted([os.path.join(path, f) for f in model_files])
     print(f"检测到 {len(model_paths)} 个模型：{model_paths}")
 
