@@ -8,9 +8,12 @@ import os
 import datetime
 import ehr_utils
 from sklearn.metrics import auc, average_precision_score, precision_recall_curve, roc_curve
+from matplotlib import font_manager
 
-plt.rcParams["font.family"] = ['monospace']  # 设置字体族为衬线字体
-plt.rcParams["font.monospace"] = ['Consolas']  # 指定具体的衬线字体为 Consolas
+# 添加字体路径
+# font_manager.fontManager.addfont('/usr/share/fonts/times.ttf')
+plt.rcParams['font.family'] = ['sans-serif'] # 设置字体为无衬线体
+plt.rcParams['font.sans-serif'] = 'Times New Roman' # 设置字体为Times New Roman
 plt.rcParams['axes.unicode_minus'] = False  # 解决保存图像是负号'-'显示为方块的问题
 
 
@@ -24,13 +27,11 @@ def plot_all_models_roc_pr(trained_models: List[Any], X_test: pd.DataFrame, Y_te
     - fill_method_name: 填充方法名称，用于区分不同的数据集
     - opt: 优化选项，默认为'opt'，可选值包括'opt'和'default'。分别为优化参数的模型和默认参数的模型
     """
-    fig, ax = plt.subplots(1, 2, figsize=(14, 6), dpi=300)
+    fig, ax = plt.subplots(1, 2, figsize=(12, 6), dpi=300)
     # 颜色表
     C = ['#f98e62', '#d6eef4', '#f0c184', '#f6ebb1', '#929fc9', '#f8fbcb', '#ef8c67', '#8074ca', '#a5d954', '#b44763']
-    names = ["ADB", "DT", "GNB", "GB", "LGBM", "LDA", "LR", "MLP", "RF", "XGB"]
-    width = 4
-    # 使用 ljust() 对齐
-    names = [name.ljust(width) for name in names]
+    # 为了在图中对齐指标
+    names = ["ADB   ", "DT      ", "GNB   ", "GB      ", "LGBM", "LDA    ", "LR       ", "MLP    ", "RF       ", "XGB    "]
     # 遍历除xgb外每个模型，计算AUC和PRC，并绘制曲线
     for i, model in enumerate(trained_models[:-1]):
         # 预测概率
@@ -46,28 +47,30 @@ def plot_all_models_roc_pr(trained_models: List[Any], X_test: pd.DataFrame, Y_te
         precision, recall, _ = precision_recall_curve(Y_test, y_pred_prob)
         prc_score = average_precision_score(Y_test, y_pred_prob)
         # 绘制PRC曲线
-        name_width = 5
         ax[1].plot(recall, precision, label=f'{names[i]}({prc_score:.2f})', color=C[i], alpha=0.7, linewidth=1)
     #xgb单独拎出来plot
     y_pred_prob = trained_models[-1].predict_proba(X_test)[:, 1]
     fpr, tpr, _ = roc_curve(Y_test, y_pred_prob)
     auc_score = auc(fpr, tpr)
-    ax[0].plot(fpr, tpr, label=f'{names[-1]}({auc_score:.2f})', color=C[-1], alpha=0.9, linewidth=2)
-
     precision, recall, _ = precision_recall_curve(Y_test, y_pred_prob)
     prc_score = average_precision_score(Y_test, y_pred_prob)
+    ax[0].plot(fpr, tpr, label=f'{names[-1]}({auc_score:.2f})', color=C[-1], alpha=0.9, linewidth=2)
     ax[1].plot(recall, precision, label=f'{names[-1]}({prc_score:.2f})', color=C[-1], alpha=0.9, linewidth=2)
+    
+    fig.suptitle(f'ROC and PRC Curves for All Models', fontsize=16, fontweight='bold')
+    
+
     # 显示图表
     ax[0].set_ylim(0, 1)
     ax[0].set_xlim(0, 1)
-    ax[0].set_title('ROC Curves')
+    ax[0].set_title('ROC Curves of the Optimized Models (Mean)')
     ax[0].set_xlabel('False Positive Rate')
     ax[0].set_ylabel('True Positive Rate')
     ax[0].legend(loc='lower right')
 
     ax[1].set_ylim(0, 1)
     ax[1].set_xlim(0, 1)
-    ax[1].set_title('PRC Curves')
+    ax[1].set_title('PRC Curves of the Optimized Models (Mean)')
     ax[1].set_xlabel('Recall')
     ax[1].set_ylabel('Precision')
     ax[1].legend(loc='best')
@@ -92,7 +95,9 @@ def eval_all_models_to_excel(trained_models: List[Any], X_test: pd.DataFrame, Y_
         Y_prob, Y_pred = ehr_utils.get_prediction_results(model, X_test)
         model_metrics = ehr_utils.eval_model(Y_test, Y_prob, Y_pred)
         metrics.append(model_metrics)
+        print(f"{model}\n评估结果：{model_metrics}")
     # 创建一个 DataFrame
+        
     df = pd.DataFrame(metrics, index=names, columns=['AUC', 'AUC_CI_Low', 'AUC_CI_High', 'Accuracy', 'Sensitivity', 'Specificity', 'PPV', 'NPV', 'F1'])
     os.makedirs('result_tables', exist_ok=True)
 
@@ -108,13 +113,14 @@ def eval_all_models_to_excel(trained_models: List[Any], X_test: pd.DataFrame, Y_
 
 
 if __name__ == '__main__':
+    print(plt.rcParams["font.monospace"])  # 打印当前设置的字体族
     #使用什么数据  可选 mean drop  bayesian
     fill_methods = ['drop', 'mean', 'bayesian']
     #使用什么优化选项 可选 opt default
     opt = 'opt'
     #是否重新计算结果
-    re_calculate = True
-    re_plot = False
+    re_calculate = False
+    re_plot = True
     # 评估所有模型
     for fill_method in fill_methods:
         # 评估trained_models_{默认or优化参数}/{控制填充方法}下的所有模型，将其保存到xlsx中的一个sheet中

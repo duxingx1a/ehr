@@ -109,7 +109,7 @@ def eval_model(y_true, y_prob, y_pred) -> list:
     f1 = f1_score(y_true, y_pred)
     y_true = np.array(y_true)
     # Bootstrap 计算 AUC 的 95% 置信区间
-    n_iterations = 20
+    n_iterations = 100
     auc_scores = []
     for _ in range(n_iterations):
         # 生成随机索引（有放回抽样）
