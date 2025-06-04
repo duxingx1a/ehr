@@ -59,9 +59,9 @@ def init_gaussianNB(default_parm: bool = True) -> GaussianNB:
     如果为True，则使用默认参数初始化模型；如果为False，则使用自定义参数初始化模型。
     """
     if default_parm:
-        model_gaussianNB = GaussianNB(priors=[0.3, 0.7])
+        model_gaussianNB = GaussianNB(priors=[0.1, 0.9])
     else:
-        model_gaussianNB = GaussianNB(priors=[0.3, 0.7], var_smoothing=1e-11)
+        model_gaussianNB = GaussianNB(priors=[0.1, 0.9], var_smoothing=1e-11)
     return model_gaussianNB
 
 
@@ -87,7 +87,7 @@ def init_lightGBM(default_parm: bool = True) -> LGBMClassifier:
     if default_parm:
         model_lgbm = LGBMClassifier(sample_weight=4.0)
     else:
-        model_lgbm = LGBMClassifier(boosting_type='gbdt', num_leaves=96, max_depth=3, learning_rate=0.11, n_estimators=400, class_weight={0: 1, 1: 5})
+        model_lgbm = LGBMClassifier(boosting_type='gbdt', num_leaves=96, max_depth=3, learning_rate=0.11, n_estimators=400, class_weight={0: 1, 1: 9})
     return model_lgbm
 
 
@@ -100,7 +100,7 @@ def init_linearDiscriminantAnalysis(default_parm: bool = True) -> LinearDiscrimi
     if default_parm:
         model_linearDiscriminantAnalysis = LinearDiscriminantAnalysis(priors=[0.3, 0.7])
     else:
-        model_linearDiscriminantAnalysis = LinearDiscriminantAnalysis(solver='svd', shrinkage=None, priors=[0.3, 0.7])
+        model_linearDiscriminantAnalysis = LinearDiscriminantAnalysis(solver='svd', shrinkage=None, priors=[0.1, 0.9])
     return model_linearDiscriminantAnalysis
 
 
@@ -147,7 +147,7 @@ def init_randomForest(default_parm: bool = True) -> RandomForestClassifier:
     return model_randomForest
 
 
-def init_XGBoost(default_parm: bool = True, **params) -> XGBClassifier:
+def init_XGBoost(default_parm: bool = True,) -> XGBClassifier:
     """
     用于初始化XGBoost分类器模型的函数。
     default_parm: 是否使用默认参数，默认为True。
@@ -157,19 +157,19 @@ def init_XGBoost(default_parm: bool = True, **params) -> XGBClassifier:
         model_XGBoost = XGBClassifier()
     else:
         model_XGBoost = XGBClassifier(n_estimators=500,
-                                      max_depth=10,
-                                      gamma=5.0,
-                                      learning_rate=0.01,
+                                      max_depth=3,
+                                      gamma=3.0,
+                                      learning_rate=0.13,
                                       eval_metric='auc',
                                       device='gpu',
-                                      subsample=0.5,
-                                      colsample_bytree=0.5,
+                                      min_child_weight=5,
+                                      subsample=0.9,
+                                      colsample_bytree=1,
                                       random_state=42,
-                                      reg_lambda=0.9,
-                                      reg_alpha=0.45,
-                                      scale_pos_weight=3.0)
-    if params:
-        model_XGBoost = XGBClassifier(**params)
+                                      reg_lambda=8,
+                                      reg_alpha=0.9,
+                                      scale_pos_weight=9.0)
+
     return model_XGBoost
 
 

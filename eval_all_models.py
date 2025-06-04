@@ -24,7 +24,7 @@ def plot_all_models_roc_pr(trained_models: List[Any], X_test: pd.DataFrame, Y_te
     - fill_method_name: 填充方法名称，用于区分不同的数据集
     - opt: 优化选项，默认为'opt'，可选值包括'opt'和'default'。分别为优化参数的模型和默认参数的模型
     """
-    fig, ax = plt.subplots(1, 2, figsize=(14, 6), dpi=300)
+    fig, ax = plt.subplots(1, 2, figsize=(12, 6), dpi=300)
     # 颜色表
     C = ['#f98e62', '#d6eef4', '#f0c184', '#f6ebb1', '#929fc9', '#f8fbcb', '#ef8c67', '#8074ca', '#a5d954', '#b44763']
     # 为了在图中对齐指标
@@ -60,14 +60,14 @@ def plot_all_models_roc_pr(trained_models: List[Any], X_test: pd.DataFrame, Y_te
     # 显示图表
     ax[0].set_ylim(0, 1)
     ax[0].set_xlim(0, 1)
-    ax[0].set_title('ROC Curves of the Optimized Models(Mean)')
+    ax[0].set_title('ROC Curves of the Optimized Models (Mean)')
     ax[0].set_xlabel('False Positive Rate')
     ax[0].set_ylabel('True Positive Rate')
     ax[0].legend(loc='lower right')
 
     ax[1].set_ylim(0, 1)
     ax[1].set_xlim(0, 1)
-    ax[1].set_title('PRC Curves of the Optimized Models(Mean)')
+    ax[1].set_title('PRC Curves of the Optimized Models (Mean)')
     ax[1].set_xlabel('Recall')
     ax[1].set_ylabel('Precision')
     ax[1].legend(loc='best')
@@ -92,7 +92,9 @@ def eval_all_models_to_excel(trained_models: List[Any], X_test: pd.DataFrame, Y_
         Y_prob, Y_pred = ehr_utils.get_prediction_results(model, X_test)
         model_metrics = ehr_utils.eval_model(Y_test, Y_prob, Y_pred)
         metrics.append(model_metrics)
+        print(f"{model}\n评估结果：{model_metrics}")
     # 创建一个 DataFrame
+        
     df = pd.DataFrame(metrics, index=names, columns=['AUC', 'AUC_CI_Low', 'AUC_CI_High', 'Accuracy', 'Sensitivity', 'Specificity', 'PPV', 'NPV', 'F1'])
     os.makedirs('result_tables', exist_ok=True)
 
@@ -108,6 +110,7 @@ def eval_all_models_to_excel(trained_models: List[Any], X_test: pd.DataFrame, Y_
 
 
 if __name__ == '__main__':
+    print(plt.rcParams["font.monospace"])  # 打印当前设置的字体族
     #使用什么数据  可选 mean drop  bayesian
     fill_methods = ['drop', 'mean', 'bayesian']
     #使用什么优化选项 可选 opt default
