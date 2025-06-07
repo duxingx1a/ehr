@@ -59,9 +59,9 @@ def init_gaussianNB(default_parm: bool = True) -> GaussianNB:
     如果为True，则使用默认参数初始化模型；如果为False，则使用自定义参数初始化模型。
     """
     if default_parm:
-        model_gaussianNB = GaussianNB(priors=[0.1, 0.9])
+        model_gaussianNB = GaussianNB(priors=[0.04, 0.96])
     else:
-        model_gaussianNB = GaussianNB(priors=[0.1, 0.9], var_smoothing=1e-11)
+        model_gaussianNB = GaussianNB(priors=[0.04, 0.96], var_smoothing=1e-11)
     return model_gaussianNB
 
 
@@ -85,9 +85,9 @@ def init_lightGBM(default_parm: bool = True) -> LGBMClassifier:
     如果为True，则使用默认参数初始化模型；如果为False，则使用自定义参数初始化模型。
     """
     if default_parm:
-        model_lgbm = LGBMClassifier(sample_weight=4.0)
+        model_lgbm = LGBMClassifier(class_weight={0: 1, 1: 30})
     else:
-        model_lgbm = LGBMClassifier(boosting_type='gbdt', num_leaves=96, max_depth=3, learning_rate=0.11, n_estimators=400, class_weight={0: 1, 1: 9})
+        model_lgbm = LGBMClassifier(boosting_type='gbdt', num_leaves=96, max_depth=3, learning_rate=0.11, n_estimators=400, class_weight={0: 1, 1: 30})
     return model_lgbm
 
 
@@ -98,9 +98,9 @@ def init_linearDiscriminantAnalysis(default_parm: bool = True) -> LinearDiscrimi
     如果为True，则使用默认参数初始化模型；如果为False，则使用自定义参数初始化模型。
     """
     if default_parm:
-        model_linearDiscriminantAnalysis = LinearDiscriminantAnalysis(priors=[0.3, 0.7])
+        model_linearDiscriminantAnalysis = LinearDiscriminantAnalysis(priors=[0.04, 0.96])
     else:
-        model_linearDiscriminantAnalysis = LinearDiscriminantAnalysis(solver='svd', shrinkage=None, priors=[0.1, 0.9])
+        model_linearDiscriminantAnalysis = LinearDiscriminantAnalysis(solver='svd', shrinkage=None, priors=[0.04, 0.96])
     return model_linearDiscriminantAnalysis
 
 
@@ -141,7 +141,7 @@ def init_randomForest(default_parm: bool = True) -> RandomForestClassifier:
     如果为True，则使用默认参数初始化模型；如果为False，则使用自定义参数初始化模型。
     """
     if default_parm:
-        model_randomForest = RandomForestClassifier(n_jobs=-1)
+        model_randomForest = RandomForestClassifier(n_jobs=-1,class_weight='balanced')
     else:
         model_randomForest = RandomForestClassifier(n_estimators=200, max_depth=14, min_samples_leaf=5, min_samples_split=10, random_state=42, class_weight='balanced', n_jobs=-1)
     return model_randomForest
@@ -154,7 +154,7 @@ def init_XGBoost(default_parm: bool = True,) -> XGBClassifier:
     如果为True，则使用默认参数初始化模型；如果为False，则使用自定义参数初始化模型。
     """
     if default_parm:
-        model_XGBoost = XGBClassifier()
+        model_XGBoost = XGBClassifier(scale_pos_weight=30.0,device='gpu',)
     else:
         model_XGBoost = XGBClassifier(n_estimators=500,
                                       max_depth=3,
@@ -168,7 +168,7 @@ def init_XGBoost(default_parm: bool = True,) -> XGBClassifier:
                                       random_state=42,
                                       reg_lambda=8,
                                       reg_alpha=0.9,
-                                      scale_pos_weight=9.0)
+                                      scale_pos_weight=30.0)
 
     return model_XGBoost
 

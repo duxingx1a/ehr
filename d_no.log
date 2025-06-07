@@ -1,0 +1,160 @@
+nohup: ignoring input
+  0%|          | 0/10 [00:00<?, ?it/s]/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+ 10%|█         | 1/10 [01:54<17:10, 114.45s/it] 20%|██        | 2/10 [02:01<06:48, 51.09s/it]  30%|███       | 3/10 [02:02<03:17, 28.20s/it] 40%|████      | 4/10 [07:33<14:48, 148.06s/it] 50%|█████     | 5/10 [07:36<07:58, 95.67s/it]  60%|██████    | 6/10 [07:39<04:16, 64.19s/it]/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:465: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+ 70%|███████   | 7/10 [07:46<02:16, 45.38s/it] 80%|████████  | 8/10 [09:14<01:57, 58.96s/it] 90%|█████████ | 9/10 [09:41<00:48, 48.82s/it]/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/xgboost/core.py:729: UserWarning: [03:41:20] WARNING: /workspace/src/common/error_msg.cc:58: Falling back to prediction using DMatrix due to mismatched devices. This might lead to higher memory usage and slower performance. XGBoost is running on: cuda:0, while the input data is on: cpu.
+Potential solutions:
+- Use a data structure that matches the device ordinal in the booster.
+- Set the device for booster before call to inplace_predict.
+
+This warning will only be shown once.
+
+  return func(**kwargs)
+100%|██████████| 10/10 [09:44<00:00, 34.84s/it]100%|██████████| 10/10 [09:44<00:00, 58.46s/it]
+Training AdaBoost...
+Model training completed for AdaBoost.
+Metrics for AdaBoost: [np.float64(0.7305031320373936), np.float64(0.7154440387174608), np.float64(0.7425073176001299), 0.963607684713412, 0.0, 1.0, 0.0, 0.963607684713412, 0.0]
+Training DecisionTree...
+Model training completed for DecisionTree.
+Metrics for DecisionTree: [np.float64(0.7180890444487462), np.float64(0.7042481925242704), np.float64(0.7321345405531512), 0.7295030809209855, 0.5774867477393202, 0.7352442413679401, 0.07610750390400263, 0.97875809308815, 0.13449039613666897]
+Training GaussianNB...
+Model training completed for GaussianNB.
+Metrics for GaussianNB: [np.float64(0.6572161471907386), np.float64(0.6439717724261034), np.float64(0.6676940482190695), 0.6452798928770015, 0.5793576551294044, 0.6477695605068539, 0.05848652732309242, 0.9760624611835684, 0.10624731951393852]
+Training GradientBoosting...
+Model training completed for GradientBoosting.
+Metrics for GradientBoosting: [np.float64(0.7400057288772383), np.float64(0.7298438909141438), np.float64(0.7524817909517549), 0.9645155067349046, 0.054879950109136266, 0.9988694710066418, 0.6470588235294118, 0.9654984007011872, 0.10117849956884162]
+Training LightGBM...
+[LightGBM] [Info] Number of positive: 12827, number of negative: 339664
+[LightGBM] [Info] Auto-choosing col-wise multi-threading, the overhead of testing was 0.036125 seconds.
+You can set `force_col_wise=true` to remove the overhead.
+[LightGBM] [Info] Total Bins 14079
+[LightGBM] [Info] Number of data points in the train set: 352491, number of used features: 73
+[LightGBM] [Info] [binary:BoostFromScore]: pavg=0.531158 -> initscore=0.124793
+[LightGBM] [Info] Start training from score 0.124793
+Model training completed for LightGBM.
+Metrics for LightGBM: [np.float64(0.7382643245468957), np.float64(0.7218662512274591), np.float64(0.7501018600790987), 0.710540948447057, 0.6289367009666355, 0.7136228743699656, 0.07659008923485855, 0.980740596879653, 0.13655135061945706]
+Training LinearDiscriminantAnalysis...
+Model training completed for LinearDiscriminantAnalysis.
+Metrics for LinearDiscriminantAnalysis: [np.float64(0.6961652545556384), np.float64(0.68063330915259), np.float64(0.7080514789851428), 0.0364377063876627, 1.0, 4.710537472325592e-05, 0.03639396724883397, 1.0, 0.07023191643124631]
+Training LogisticRegression...
+Model training completed for LogisticRegression.
+Metrics for LogisticRegression: [np.float64(0.6791253589471415), np.float64(0.6665402319624308), np.float64(0.6938777892480485), 0.6165019347956833, 0.6410975990021828, 0.6155730368835084, 0.0592507204610951, 0.9784549725773544, 0.10847600706993431]
+Training MLPClassifier...
+Model training completed for MLPClassifier.
+Metrics for MLPClassifier: [np.float64(0.7221981309638992), np.float64(0.7089870784200876), np.float64(0.7346017503046416), 0.9636757713650239, 0.00904271905207359, 0.9997291440953413, 0.5576923076923077, 0.9639154772853721, 0.017796870205584535]
+Training RandomForest...
+Model training completed for RandomForest.
+Metrics for RandomForest: [np.float64(0.6837621372902671), np.float64(0.6689908652932155), np.float64(0.6945782217275037), 0.9639935090725463, 0.014343623323978797, 0.9998586838758302, 0.7931034482758621, 0.9641060580253222, 0.028177641653905055]
+Training XGBoost...
+Model training completed for XGBoost.
+Metrics for XGBoost: [np.float64(0.7139148428683233), np.float64(0.7019734438493938), np.float64(0.7283757218577116), 0.7632740601205134, 0.5434985968194574, 0.7715742616232513, 0.08245033112582781, 0.9781437081050416, 0.1431798578880355]
+  0%|          | 0/10 [00:00<?, ?it/s]/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+ 10%|█         | 1/10 [03:10<28:31, 190.19s/it] 20%|██        | 2/10 [03:36<12:31, 93.97s/it]  30%|███       | 3/10 [03:39<06:06, 52.37s/it] 40%|████      | 4/10 [1:54:44<4:26:17, 2662.99s/it] 50%|█████     | 5/10 [2:42:11<3:47:26, 2729.23s/it] 60%|██████    | 6/10 [2:42:42<2:00:47, 1811.98s/it]/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:465: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+ 70%|███████   | 7/10 [2:43:20<1:01:35, 1231.87s/it]/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+ 80%|████████  | 8/10 [4:27:39<1:34:24, 2832.20s/it] 90%|█████████ | 9/10 [4:29:04<32:53, 1973.41s/it]  100%|██████████| 10/10 [4:29:10<00:00, 1366.16s/it]100%|██████████| 10/10 [4:29:10<00:00, 1615.07s/it]
+Training AdaBoost...
+Model training completed for AdaBoost.
+Metrics for AdaBoost: [np.float64(0.6948912128455302), np.float64(0.6837870463726964), np.float64(0.709334741495561), 0.9645255607839555, 0.0, 1.0, 0.0, 0.9645255607839555, 0.0]
+Training DecisionTree...
+Model training completed for DecisionTree.
+Metrics for DecisionTree: [np.float64(0.6751903992827937), np.float64(0.6639222054052936), np.float64(0.6846612320959378), 0.6199689341678468, 0.618587679759605, 0.6200197355437143, 0.056492080915791124, 0.9778754451057048, 0.10352941176470588]
+Training GaussianNB...
+Model training completed for GaussianNB.
+Metrics for GaussianNB: [np.float64(0.6358209488454623), np.float64(0.625546330448091), np.float64(0.6475556269539263), 0.61712884706169, 0.5790942262288045, 0.6185277284389185, 0.05288018658983556, 0.9755830313896878, 0.09691091954022989]
+Training GradientBoosting...
+Model training completed for GradientBoosting.
+Metrics for GradientBoosting: [np.float64(0.7068625030726916), np.float64(0.6961680255553813), np.float64(0.7170679856025267), 0.965081395525911, 0.03541532517707663, 0.9992737319913164, 0.642023346303502, 0.9657148088528117, 0.06712774613506917]
+Training LightGBM...
+[LightGBM] [Info] Number of positive: 18635, number of negative: 506701
+[LightGBM] [Info] Auto-choosing row-wise multi-threading, the overhead of testing was 0.697764 seconds.
+You can set `force_row_wise=true` to remove the overhead.
+And if memory is not enough, you can set `force_col_wise=true`.
+[LightGBM] [Info] Total Bins 14160
+[LightGBM] [Info] Number of data points in the train set: 525336, number of used features: 73
+[LightGBM] [Info] [binary:BoostFromScore]: pavg=0.524560 -> initscore=0.098318
+[LightGBM] [Info] Start training from score 0.098318
+Model training completed for LightGBM.
+Metrics for LightGBM: [np.float64(0.7091238176835639), np.float64(0.6974935227645745), np.float64(0.7215631935888928), 0.6900497967015395, 0.5999141446662374, 0.6933649102032761, 0.06712618281377587, 0.9792186942561542, 0.12074216471909627]
+Training LinearDiscriminantAnalysis...
+Model training completed for LinearDiscriminantAnalysis.
+Metrics for LinearDiscriminantAnalysis: [np.float64(0.6712731018433269), np.float64(0.6608020612180603), np.float64(0.6799153218003064), 0.03551251008878128, 1.0, 3.9471087428458653e-05, 0.03547578981032369, 1.0, 0.06852075183104392]
+Training LogisticRegression...
+Model training completed for LogisticRegression.
+Metrics for LogisticRegression: [np.float64(0.6524756043221307), np.float64(0.6438542169673285), np.float64(0.6650546147866926), 0.603042624149116, 0.614080274737068, 0.602636668640221, 0.05378122826475177, 0.9769891344689455, 0.09890071902654868]
+Training MLPClassifier...
+Model training completed for MLPClassifier.
+Metrics for MLPClassifier: [np.float64(0.6739976828209653), np.float64(0.661470310845766), np.float64(0.6873133887461007), 0.9645255607839555, 0.0, 1.0, 0.0, 0.9645255607839555, 0.0]
+Training RandomForest...
+Model training completed for RandomForest.
+Metrics for RandomForest: [np.float64(0.6468873260574878), np.float64(0.6348757882085116), np.float64(0.6564150073150473), 0.9646017025294288, 0.0060098733633827004, 0.9998579040852575, 0.6086956521739131, 0.964726403022363, 0.011902231668437832]
+Training XGBoost...
+Model training completed for XGBoost.
+Metrics for XGBoost: [np.float64(0.6906319698948873), np.float64(0.6769703659564654), np.float64(0.7014591297728511), 0.735925198349247, 0.5265078342992059, 0.7436273929346754, 0.07022817715938046, 0.9771173694310461, 0.12392644235626958]
+  0%|          | 0/10 [00:00<?, ?it/s]/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+ 10%|█         | 1/10 [04:22<39:25, 262.89s/it] 20%|██        | 2/10 [04:39<15:43, 117.97s/it] 30%|███       | 3/10 [04:41<07:35, 65.03s/it]  40%|████      | 4/10 [29:51<1:03:31, 635.32s/it] 50%|█████     | 5/10 [1:15:00<1:55:15, 1383.16s/it] 60%|██████    | 6/10 [1:15:20<1:01:19, 919.76s/it] /home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:465: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+ 70%|███████   | 7/10 [1:15:51<31:27, 629.17s/it]   80%|████████  | 8/10 [3:15:57<1:30:45, 2722.99s/it] 90%|█████████ | 9/10 [3:17:08<31:33, 1893.79s/it]  100%|██████████| 10/10 [3:17:18<00:00, 1312.30s/it]100%|██████████| 10/10 [3:17:18<00:00, 1183.83s/it]
+Training AdaBoost...
+Model training completed for AdaBoost.
+Metrics for AdaBoost: [np.float64(0.6980573718482699), np.float64(0.6860413565862881), np.float64(0.7115068378617692), 0.9645255607839555, 0.0, 1.0, 0.0, 0.9645255607839555, 0.0]
+Training DecisionTree...
+Model training completed for DecisionTree.
+Metrics for DecisionTree: [np.float64(0.6831161987216332), np.float64(0.6716458720680802), np.float64(0.6922824513024103), 0.7093745717026817, 0.5456106460613865, 0.7153976712058417, 0.06586516038762502, 0.9771727409963339, 0.11754097981642891]
+Training GaussianNB...
+Model training completed for GaussianNB.
+Metrics for GaussianNB: [np.float64(0.6355873747249403), np.float64(0.6252515996164507), np.float64(0.6464177113049984), 0.6171593037598794, 0.5786649495599914, 0.6185750937438327, 0.05284927371454335, 0.9755605632399995, 0.0968529961201322]
+Training GradientBoosting...
+Model training completed for GradientBoosting.
+Metrics for GradientBoosting: [np.float64(0.7075543111869524), np.float64(0.695296442270806), np.float64(0.7201939599595011), 0.9650585530022691, 0.040137368534020175, 0.999076376554174, 0.6151315789473685, 0.965870411356178, 0.07535764658472698]
+Training LightGBM...
+[LightGBM] [Info] Number of positive: 18635, number of negative: 506701
+[LightGBM] [Info] Auto-choosing row-wise multi-threading, the overhead of testing was 0.359226 seconds.
+You can set `force_row_wise=true` to remove the overhead.
+And if memory is not enough, you can set `force_col_wise=true`.
+[LightGBM] [Info] Total Bins 14133
+[LightGBM] [Info] Number of data points in the train set: 525336, number of used features: 73
+[LightGBM] [Info] [binary:BoostFromScore]: pavg=0.524560 -> initscore=0.098318
+[LightGBM] [Info] Start training from score 0.098318
+Model training completed for LightGBM.
+Metrics for LightGBM: [np.float64(0.7082768481231092), np.float64(0.6975174874202275), np.float64(0.7208057578035936), 0.6871564103735514, 0.601416613007083, 0.6903098480363135, 0.0666634944803959, 0.9792053929363285, 0.1200231307960849]
+Training LinearDiscriminantAnalysis...
+Model training completed for LinearDiscriminantAnalysis.
+Metrics for LinearDiscriminantAnalysis: [np.float64(0.6714549043673331), np.float64(0.6602013440210418), np.float64(0.6822035896350587), 0.035520124263328616, 1.0, 4.7365304914150384e-05, 0.03547605994152047, 1.0, 0.06852125570826623]
+Training LogisticRegression...
+Model training completed for LogisticRegression.
+Metrics for LogisticRegression: [np.float64(0.6518538029554009), np.float64(0.6399762682381246), np.float64(0.6610404083940506), 0.6002558362647905, 0.6147241897402876, 0.5997237023880008, 0.05346375702365174, 0.9769176364688484, 0.09837191729065055]
+Training MLPClassifier...
+Model training completed for MLPClassifier.
+Metrics for MLPClassifier: [np.float64(0.6893922795349359), np.float64(0.6784241554145326), np.float64(0.6998074323669452), 0.964517946609408, 0.000643915003219575, 0.9999684231300572, 0.42857142857142855, 0.9645465136643645, 0.0012858979854264896]
+Training RandomForest...
+Model training completed for RandomForest.
+Metrics for RandomForest: [np.float64(0.6542524411986486), np.float64(0.6424548443296672), np.float64(0.6680743283362768), 0.9646854584494495, 0.0094440867138871, 0.9998184329978291, 0.6567164179104478, 0.9648426489521357, 0.018620397799407534]
+Training XGBoost...
+Model training completed for XGBoost.
+Metrics for XGBoost: [np.float64(0.6890439893366218), np.float64(0.680062471841961), np.float64(0.7010159302550503), 0.7308008588788889, 0.5265078342992059, 0.7383145845668048, 0.06890062356047413, 0.9769565035724731, 0.1218548967983905]
+  0%|          | 0/10 [00:00<?, ?it/s]/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+ 10%|█         | 1/10 [02:57<26:34, 177.13s/it] 20%|██        | 2/10 [03:09<10:41, 80.17s/it]  30%|███       | 3/10 [03:12<05:13, 44.74s/it]

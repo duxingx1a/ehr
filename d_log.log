@@ -1,0 +1,194 @@
+nohup: ignoring input
+数值型变量（排除one-hot编码）: ['Cystatin-C', 'Creatinine', 'Serum_Uric_acid', 'Serum_Urea', 'Uric_RBC', 'Uric_WBC', 'Uric_PH', 'Uric_specific_gravity', 'Uric_conductivity', 'Uric_epithelium', 'Uric_bacteria', 'RBC', 'RDW(SD)', 'RDW(CV)', 'HCT', 'MCHC', 'MCH', 'MCV', 'HB', 'WBC', 'Neutrophil_count', 'Neutrophil_percentage', 'Lymphocytes_count', 'Lymphocytes_percentage', 'Basophil_count', 'Basophil_percentage', 'Eosinophil_count', 'Eosinophil_percentage', 'Monocytes_count', 'Monocytes_percentage', 'platelets_count', 'AST', 'ALT', 'AST_to_ALT_ratio', 'DBIL', 'IBIL', 'TBIL', 'Globulin', 'Total_protein', 'Albumin', 'ALB_to_GLO_ratio', 'CK', 'AKP', 'GGT', 'α-HBDH', 'LDH', 'Fasting_blood_glucose', 'Cholesterol', 'Triglycerides', 'HDL', 'LDL', 'Systolic_BP', 'Diastolic_BP', 'BMI', 'Height', 'Weight', 'Waistline', 'Hips', 'Waist_to_hip_ratio', 'Age', 'eGFR', 'NLR', 'BLR', 'ELR', 'MLR', 'PLR', 'BRI', 'ABSI']
+总特征数: 73
+需要log1p的特征数: 68
+  0%|          | 0/10 [00:00<?, ?it/s]/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+ 10%|█         | 1/10 [02:15<20:16, 135.16s/it] 20%|██        | 2/10 [02:34<08:54, 66.80s/it]  30%|███       | 3/10 [02:36<04:22, 37.53s/it] 40%|████      | 4/10 [08:04<15:13, 152.17s/it] 50%|█████     | 5/10 [08:07<08:11, 98.27s/it]  60%|██████    | 6/10 [08:10<04:23, 65.76s/it]/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:465: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+ 70%|███████   | 7/10 [08:15<02:18, 46.14s/it] 80%|████████  | 8/10 [08:59<01:30, 45.37s/it] 90%|█████████ | 9/10 [09:16<00:36, 36.56s/it]/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/xgboost/core.py:729: UserWarning: [03:39:07] WARNING: /workspace/src/common/error_msg.cc:58: Falling back to prediction using DMatrix due to mismatched devices. This might lead to higher memory usage and slower performance. XGBoost is running on: cuda:0, while the input data is on: cpu.
+Potential solutions:
+- Use a data structure that matches the device ordinal in the booster.
+- Set the device for booster before call to inplace_predict.
+
+This warning will only be shown once.
+
+  return func(**kwargs)
+100%|██████████| 10/10 [09:18<00:00, 25.85s/it]100%|██████████| 10/10 [09:18<00:00, 55.86s/it]
+Training AdaBoost...
+Model training completed for AdaBoost.
+Metrics for AdaBoost: [np.float64(0.7305028309272652), np.float64(0.7185326019582716), np.float64(0.7439400795174242), 0.963607684713412, 0.0, 1.0, 0.0, 0.963607684713412, 0.0]
+Training DecisionTree...
+Model training completed for DecisionTree.
+Metrics for DecisionTree: [np.float64(0.7180890444487462), np.float64(0.7050517352227208), np.float64(0.7299044729577732), 0.7295030809209855, 0.5774867477393202, 0.7352442413679401, 0.07610750390400263, 0.97875809308815, 0.13449039613666897]
+Training GaussianNB...
+Model training completed for GaussianNB.
+Metrics for GaussianNB: [np.float64(0.6681335228212028), np.float64(0.6546052775840823), np.float64(0.6795079017229428), 0.4607764147838816, 0.7792329279700655, 0.4487493523010976, 0.050680403171834754, 0.9817591590663163, 0.09517099550613146]
+Training GradientBoosting...
+Model training completed for GradientBoosting.
+Metrics for GradientBoosting: [np.float64(0.7400197194819855), np.float64(0.7261395982174415), np.float64(0.7514864977786155), 0.9645041589596359, 0.0545681322107889, 0.9988694710066418, 0.6457564575645757, 0.965487410645176, 0.10063254744105808]
+Training LightGBM...
+[LightGBM] [Info] Number of positive: 12827, number of negative: 339664
+[LightGBM] [Info] Auto-choosing col-wise multi-threading, the overhead of testing was 0.033692 seconds.
+You can set `force_col_wise=true` to remove the overhead.
+[LightGBM] [Info] Total Bins 14080
+[LightGBM] [Info] Number of data points in the train set: 352491, number of used features: 73
+[LightGBM] [Info] [binary:BoostFromScore]: pavg=0.531158 -> initscore=0.124793
+[LightGBM] [Info] Start training from score 0.124793
+Model training completed for LightGBM.
+Metrics for LightGBM: [np.float64(0.7405541862878471), np.float64(0.7293666792031024), np.float64(0.7524784850722114), 0.7096217786502956, 0.6333021515434986, 0.7125041217202883, 0.07680381182877023, 0.9809335430211255, 0.1369936932987083]
+Training LinearDiscriminantAnalysis...
+Model training completed for LinearDiscriminantAnalysis.
+Metrics for LinearDiscriminantAnalysis: [np.float64(0.7167260969930365), np.float64(0.702698886899499), np.float64(0.729714898316052), 0.036800835196259776, 1.0, 0.0004239483725093033, 0.03640718834788334, 1.0, 0.07025653383573947]
+Training LogisticRegression...
+Model training completed for LogisticRegression.
+Metrics for LogisticRegression: [np.float64(0.715347835149637), np.float64(0.7019100872674777), np.float64(0.7303065864109057), 0.6503977395231665, 0.660118490801372, 0.6500306184935701, 0.0664991361708811, 0.9806353041500853, 0.12082643684721192]
+Training MLPClassifier...
+Model training completed for MLPClassifier.
+Metrics for MLPClassifier: [np.float64(0.7224133549362959), np.float64(0.7094025399149408), np.float64(0.7370066488708336), 0.964367985656412, 0.039600873090115375, 0.9992934193791512, 0.679144385026738, 0.9649745269286754, 0.07483794932233354]
+Training RandomForest...
+Model training completed for RandomForest.
+Metrics for RandomForest: [np.float64(0.6853656093133097), np.float64(0.6691176582877154), np.float64(0.698239057283839), 0.9640275523983522, 0.017149984409105083, 0.9997880258137454, 0.7534246575342466, 0.9642021578648495, 0.03353658536585366]
+Training XGBoost...
+Model training completed for XGBoost.
+Metrics for XGBoost: [np.float64(0.7126820851503309), np.float64(0.6955725717235407), np.float64(0.7281449812982665), 0.7659180917581109, 0.5400685999376365, 0.7744476894813698, 0.0829303327747187, 0.9780630000892353, 0.14378216835464055]
+数值型变量（排除one-hot编码）: ['Cystatin-C', 'Creatinine', 'Serum_Uric_acid', 'Serum_Urea', 'Uric_RBC', 'Uric_WBC', 'Uric_PH', 'Uric_specific_gravity', 'Uric_conductivity', 'Uric_epithelium', 'Uric_bacteria', 'RBC', 'RDW(SD)', 'RDW(CV)', 'HCT', 'MCHC', 'MCH', 'MCV', 'HB', 'WBC', 'Neutrophil_count', 'Neutrophil_percentage', 'Lymphocytes_count', 'Lymphocytes_percentage', 'Basophil_count', 'Basophil_percentage', 'Eosinophil_count', 'Eosinophil_percentage', 'Monocytes_count', 'Monocytes_percentage', 'platelets_count', 'AST', 'ALT', 'AST_to_ALT_ratio', 'DBIL', 'IBIL', 'TBIL', 'Globulin', 'Total_protein', 'Albumin', 'ALB_to_GLO_ratio', 'CK', 'AKP', 'GGT', 'α-HBDH', 'LDH', 'Fasting_blood_glucose', 'Cholesterol', 'Triglycerides', 'HDL', 'LDL', 'Systolic_BP', 'Diastolic_BP', 'BMI', 'Height', 'Weight', 'Waistline', 'Hips', 'Waist_to_hip_ratio', 'Smoke', 'Alcohol', 'Age', 'eGFR', 'NLR', 'BLR', 'ELR', 'MLR', 'PLR', 'BRI', 'ABSI']
+总特征数: 73
+需要log1p的特征数: 70
+  0%|          | 0/10 [00:00<?, ?it/s]/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+ 10%|█         | 1/10 [02:38<23:49, 158.85s/it] 20%|██        | 2/10 [02:55<10:03, 75.39s/it]  30%|███       | 3/10 [02:58<04:56, 42.29s/it] 40%|████      | 4/10 [1:37:04<3:45:27, 2254.57s/it] 50%|█████     | 5/10 [2:31:38<3:38:31, 2622.20s/it] 60%|██████    | 6/10 [2:32:05<1:55:58, 1739.62s/it]/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:465: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+ 70%|███████   | 7/10 [2:32:58<59:24, 1188.21s/it]   80%|████████  | 8/10 [3:45:45<1:13:20, 2200.24s/it] 90%|█████████ | 9/10 [3:47:19<25:41, 1541.71s/it]  100%|██████████| 10/10 [3:47:34<00:00, 1070.40s/it]100%|██████████| 10/10 [3:47:34<00:00, 1365.40s/it]
+Training AdaBoost...
+Model training completed for AdaBoost.
+Metrics for AdaBoost: [np.float64(0.6948912128455302), np.float64(0.6814360952317764), np.float64(0.7034255353057812), 0.9645255607839555, 0.0, 1.0, 0.0, 0.9645255607839555, 0.0]
+Training DecisionTree...
+Model training completed for DecisionTree.
+Metrics for DecisionTree: [np.float64(0.6751903992827937), np.float64(0.6670206647777894), np.float64(0.686961303278913), 0.6199689341678468, 0.618587679759605, 0.6200197355437143, 0.056492080915791124, 0.9778754451057048, 0.10352941176470588]
+Training GaussianNB...
+Model training completed for GaussianNB.
+Metrics for GaussianNB: [np.float64(0.6413491012660443), np.float64(0.6289209903973112), np.float64(0.6529045083373602), 0.43093182268110314, 0.7684052371753595, 0.4185198342214328, 0.046349642020222945, 0.9800536093908864, 0.0874258223644045]
+Training GradientBoosting...
+Model training completed for GradientBoosting.
+Metrics for GradientBoosting: [np.float64(0.7068284083218335), np.float64(0.6910767147278901), np.float64(0.7181249332057156), 0.9650737813513637, 0.03541532517707663, 0.9992658377738307, 0.6395348837209303, 0.9657145472855443, 0.06711409395973154]
+Training LightGBM...
+[LightGBM] [Info] Number of positive: 18635, number of negative: 506701
+[LightGBM] [Info] Auto-choosing row-wise multi-threading, the overhead of testing was 2.091062 seconds.
+You can set `force_row_wise=true` to remove the overhead.
+And if memory is not enough, you can set `force_col_wise=true`.
+[LightGBM] [Info] Total Bins 14161
+[LightGBM] [Info] Number of data points in the train set: 525336, number of used features: 73
+[LightGBM] [Info] [binary:BoostFromScore]: pavg=0.524560 -> initscore=0.098318
+[LightGBM] [Info] Start training from score 0.098318
+Model training completed for LightGBM.
+Metrics for LightGBM: [np.float64(0.7100120027179897), np.float64(0.7013759233332575), np.float64(0.7216732793647465), 0.687712245115507, 0.605494741360807, 0.6907361357805407, 0.06717146462842584, 0.9794262175806216, 0.12092764060356653]
+Training LinearDiscriminantAnalysis...
+Model training completed for LinearDiscriminantAnalysis.
+Metrics for LinearDiscriminantAnalysis: [np.float64(0.6798616376993871), np.float64(0.6703001317574452), np.float64(0.6917046273103191), 0.03555058096151796, 1.0, 7.894217485691731e-05, 0.03547714050744723, 1.0, 0.06852327129126434]
+Training LogisticRegression...
+Model training completed for LogisticRegression.
+Metrics for LogisticRegression: [np.float64(0.680980579911521), np.float64(0.6701920024907695), np.float64(0.6913933582364874), 0.6286414789772641, 0.6306074264863705, 0.6285691730807184, 0.05877293004460982, 0.9788431987214948, 0.10752452056799883]
+Training MLPClassifier...
+Model training completed for MLPClassifier.
+Metrics for MLPClassifier: [np.float64(0.6818170873887248), np.float64(0.6711116583940183), np.float64(0.693250495826904), 0.9648910411622276, 0.019961365099806824, 0.9996447602131439, 0.6739130434782609, 0.9651971096679777, 0.03877423389618512]
+Training RandomForest...
+Model training completed for RandomForest.
+Metrics for RandomForest: [np.float64(0.6525937998537985), np.float64(0.640055342560796), np.float64(0.6655654662215619), 0.9646017025294288, 0.00815625670744795, 0.9997789619104006, 0.5757575757575758, 0.9647972087637505, 0.016084656084656083]
+Training XGBoost...
+Model training completed for XGBoost.
+Metrics for XGBoost: [np.float64(0.6907387595615617), np.float64(0.6779122010550452), np.float64(0.703275738076129), 0.7350267257526611, 0.5292981326464906, 0.7425932504440498, 0.07031049525275854, 0.9772181880512357, 0.12413168227121715]
+数值型变量（排除one-hot编码）: ['Cystatin-C', 'Creatinine', 'Serum_Uric_acid', 'Serum_Urea', 'Uric_RBC', 'Uric_WBC', 'Uric_PH', 'Uric_specific_gravity', 'Uric_conductivity', 'Uric_epithelium', 'Uric_bacteria', 'RBC', 'RDW(SD)', 'RDW(CV)', 'HCT', 'MCHC', 'MCH', 'MCV', 'HB', 'WBC', 'Neutrophil_count', 'Neutrophil_percentage', 'Lymphocytes_count', 'Lymphocytes_percentage', 'Basophil_count', 'Basophil_percentage', 'Eosinophil_count', 'Eosinophil_percentage', 'Monocytes_count', 'Monocytes_percentage', 'platelets_count', 'AST', 'ALT', 'AST_to_ALT_ratio', 'DBIL', 'IBIL', 'TBIL', 'Globulin', 'Total_protein', 'Albumin', 'ALB_to_GLO_ratio', 'CK', 'AKP', 'GGT', 'α-HBDH', 'LDH', 'Fasting_blood_glucose', 'Cholesterol', 'Triglycerides', 'HDL', 'LDL', 'Systolic_BP', 'Diastolic_BP', 'BMI', 'Height', 'Weight', 'Waistline', 'Hips', 'Waist_to_hip_ratio', 'Age', 'eGFR', 'NLR', 'BLR', 'ELR', 'MLR', 'PLR', 'BRI', 'ABSI']
+总特征数: 73
+需要log1p的特征数: 68
+  0%|          | 0/10 [00:00<?, ?it/s]/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+ 10%|█         | 1/10 [05:11<46:43, 311.49s/it] 20%|██        | 2/10 [05:30<18:34, 139.26s/it] 30%|███       | 3/10 [05:33<08:59, 77.08s/it]  40%|████      | 4/10 [30:51<1:04:36, 646.16s/it] 50%|█████     | 5/10 [1:19:36<2:02:18, 1467.77s/it] 60%|██████    | 6/10 [1:19:58<1:05:05, 976.37s/it] /home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:465: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+ 70%|███████   | 7/10 [1:20:34<33:26, 668.76s/it]   80%|████████  | 8/10 [2:35:02<1:02:36, 1878.39s/it] 90%|█████████ | 9/10 [2:36:21<21:55, 1315.76s/it]  100%|██████████| 10/10 [2:36:34<00:00, 913.53s/it]100%|██████████| 10/10 [2:36:34<00:00, 939.43s/it]
+/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/pandas/core/internals/blocks.py:393: RuntimeWarning: invalid value encountered in log1p
+  result = func(self.values, **kwargs)
+/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/pandas/core/internals/blocks.py:393: RuntimeWarning: invalid value encountered in log1p
+  result = func(self.values, **kwargs)
+Training AdaBoost...
+Model training completed for AdaBoost.
+Metrics for AdaBoost: [np.float64(0.6980573718482699), np.float64(0.687923984632575), np.float64(0.7088434486833501), 0.9645255607839555, 0.0, 1.0, 0.0, 0.9645255607839555, 0.0]
+Training DecisionTree...
+Model training completed for DecisionTree.
+Metrics for DecisionTree: [np.float64(0.6831161987216332), np.float64(0.6729592651703673), np.float64(0.6945392101989589), 0.7093745717026817, 0.5456106460613865, 0.7153976712058417, 0.06586516038762502, 0.9771727409963339, 0.11754097981642891]
+Training GaussianNB...
+Model training completed for GaussianNB.
+Metrics for GaussianNB: [np.float64(0.6432668649201366), np.float64(0.632030656527626), np.float64(0.6537315223720523), 0.4317236968340262, 0.7699077055162052, 0.4192855733175449, 0.04649444581264825, 0.9802159269170435, 0.08769313514570702]
+Training GradientBoosting...
+Model training completed for GradientBoosting.
+Metrics for GradientBoosting: [np.float64(0.7075557582059979), np.float64(0.6962565094854409), np.float64(0.7186448543175397), 0.9650585530022691, 0.040137368534020175, 0.999076376554174, 0.6151315789473685, 0.965870411356178, 0.07535764658472698]
+Training LightGBM...
+[LightGBM] [Info] Number of positive: 18635, number of negative: 506701
+[LightGBM] [Info] Auto-choosing row-wise multi-threading, the overhead of testing was 0.501168 seconds.
+You can set `force_row_wise=true` to remove the overhead.
+And if memory is not enough, you can set `force_col_wise=true`.
+[LightGBM] [Info] Total Bins 14134
+[LightGBM] [Info] Number of data points in the train set: 525336, number of used features: 73
+[LightGBM] [Info] [binary:BoostFromScore]: pavg=0.524560 -> initscore=0.098318
+[LightGBM] [Info] Start training from score 0.098318
+Model training completed for LightGBM.
+Metrics for LightGBM: [np.float64(0.709427288415507), np.float64(0.6991624690070839), np.float64(0.72107742116714), 0.6876132608463916, 0.604636188023181, 0.6906650878231695, 0.06706823484595971, 0.9793802892580487, 0.12074323310687726]
+Training LinearDiscriminantAnalysis...
+Model training completed for LinearDiscriminantAnalysis.
+Metrics for LinearDiscriminantAnalysis: [np.float64(0.6855806737898467), np.float64(0.6719270382109294), np.float64(0.6973834103776793), 0.03558865183425465, 1.0, 0.00011841326228537596, 0.03547849130742695, 1.0, 0.06852579093676918]
+Training LogisticRegression...
+Model training completed for LogisticRegression.
+Metrics for LogisticRegression: [np.float64(0.6864369176579658), np.float64(0.6747526042485081), np.float64(0.6974878558015042), 0.6280247308389297, 0.6312513414895901, 0.6279060588119203, 0.058730729291476956, 0.9788574663417756, 0.10746323193569014]
+Training MLPClassifier...
+Model training completed for MLPClassifier.
+Metrics for MLPClassifier: [np.float64(0.6943454070891141), np.float64(0.6850471282784705), np.float64(0.7021579490059144), 0.9648529702894909, 0.0266151534664091, 0.9993605683836589, 0.6048780487804878, 0.9654157356496275, 0.05098684210526316]
+Training RandomForest...
+Model training completed for RandomForest.
+Metrics for RandomForest: [np.float64(0.657639612874962), np.float64(0.6481582780851707), np.float64(0.6681980673450444), 0.9645484033075974, 0.00901481004507405, 0.999692125518058, 0.5185185185185185, 0.9648236611734589, 0.017721518987341773]
+Training XGBoost...
+Model training completed for XGBoost.
+Metrics for XGBoost: [np.float64(0.6889874420689357), np.float64(0.676833730392751), np.float64(0.7003530373238488), 0.7300013705514186, 0.5286542176432711, 0.7374067495559503, 0.0689394575531111, 0.9770309705356303, 0.12197296092705393]
+数值型变量（排除one-hot编码）: ['Cystatin-C', 'Creatinine', 'Serum_Uric_acid', 'Serum_Urea', 'Uric_RBC', 'Uric_WBC', 'Uric_PH', 'Uric_specific_gravity', 'Uric_conductivity', 'Uric_epithelium', 'Uric_bacteria', 'RBC', 'RDW(SD)', 'RDW(CV)', 'HCT', 'MCHC', 'MCH', 'MCV', 'HB', 'WBC', 'Neutrophil_count', 'Neutrophil_percentage', 'Lymphocytes_count', 'Lymphocytes_percentage', 'Basophil_count', 'Basophil_percentage', 'Eosinophil_count', 'Eosinophil_percentage', 'Monocytes_count', 'Monocytes_percentage', 'platelets_count', 'AST', 'ALT', 'AST_to_ALT_ratio', 'DBIL', 'IBIL', 'TBIL', 'Globulin', 'Total_protein', 'Albumin', 'ALB_to_GLO_ratio', 'CK', 'AKP', 'GGT', 'α-HBDH', 'LDH', 'Fasting_blood_glucose', 'Cholesterol', 'Triglycerides', 'HDL', 'LDL', 'Systolic_BP', 'Diastolic_BP', 'BMI', 'Height', 'Weight', 'Waistline', 'Hips', 'Waist_to_hip_ratio', 'Smoke', 'Alcohol', 'Age', 'eGFR', 'NLR', 'BLR', 'ELR', 'MLR', 'PLR', 'BRI', 'ABSI']
+总特征数: 73
+需要log1p的特征数: 70
+  0%|          | 0/10 [00:00<?, ?it/s]  0%|          | 0/10 [00:00<?, ?it/s]
+Training AdaBoost...
+Traceback (most recent call last):
+  File "/home/mclab/ydl/ehr0606/train_all_models_default_log.py", line 62, in <module>
+    train_and_save_all_models(file_path_bayesian, method='bayesian')
+  File "/home/mclab/ydl/ehr0606/train_all_models_default_log.py", line 41, in train_and_save_all_models
+    model.fit(X_train, Y_train)
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/base.py", line 1389, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/ensemble/_weight_boosting.py", line 130, in fit
+    X, y = validate_data(
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/utils/validation.py", line 2961, in validate_data
+    X, y = check_X_y(X, y, **check_params)
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/utils/validation.py", line 1370, in check_X_y
+    X = check_array(
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/utils/validation.py", line 1107, in check_array
+    _assert_all_finite(
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/utils/validation.py", line 120, in _assert_all_finite
+    _assert_all_finite_element_wise(
+  File "/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/utils/validation.py", line 169, in _assert_all_finite_element_wise
+    raise ValueError(msg_err)
+ValueError: Input X contains NaN.
+AdaBoostClassifier does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values

@@ -14,6 +14,7 @@ import pandas as pd
 from sklearn.utils import resample
 import sys
 
+
 def get_train_test(data_path, train_size=0.8, random_state=42) -> List:
     """
     自定义划分函数,将df直接划分为训练集和测试集。
@@ -27,6 +28,7 @@ def get_train_test(data_path, train_size=0.8, random_state=42) -> List:
     df = pd.read_csv(data_path)
     y = df.pop('have_stone')
     x = df
+
     return train_test_split(x, y, train_size=train_size, random_state=random_state, stratify=y)
 
 
