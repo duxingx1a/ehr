@@ -1,7 +1,14 @@
 nohup: ignoring input
-  0%|          | 0/10 [00:00<?, ?it/s]/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+
+  0%|          | 0/10 [00:00<?, ?it/s]/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
   _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
- 10%|█         | 1/10 [00:59<08:59, 59.98s/it] 20%|██        | 2/10 [01:07<03:50, 28.84s/it] 30%|███       | 3/10 [01:07<01:52, 16.11s/it] 40%|████      | 4/10 [06:49<14:26, 144.45s/it] 50%|█████     | 5/10 [06:51<07:46, 93.36s/it]  60%|██████    | 6/10 [06:55<04:11, 62.75s/it]/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:465: ConvergenceWarning: lbfgs failed to converge (status=1):
+
+ 10%|█         | 1/10 [00:59<08:59, 59.98s/it]
+ 20%|██        | 2/10 [01:07<03:50, 28.84s/it]
+ 30%|███       | 3/10 [01:07<01:52, 16.11s/it]
+ 40%|████      | 4/10 [06:49<14:26, 144.45s/it]
+ 50%|█████     | 5/10 [06:51<07:46, 93.36s/it] 
+ 60%|██████    | 6/10 [06:55<04:11, 62.75s/it]/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:465: ConvergenceWarning: lbfgs failed to converge (status=1):
 STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
 
 Increase the number of iterations (max_iter) or scale the data as shown in:
@@ -9,7 +16,10 @@ Increase the number of iterations (max_iter) or scale the data as shown in:
 Please also refer to the documentation for alternative solver options:
     https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
   n_iter_i = _check_optimize_result(
- 70%|███████   | 7/10 [07:02<02:14, 44.67s/it] 80%|████████  | 8/10 [2:31:16<1:32:50, 2785.27s/it] 90%|█████████ | 9/10 [2:31:54<32:06, 1926.49s/it]  /home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/xgboost/core.py:729: UserWarning: [06:05:16] WARNING: /workspace/src/common/error_msg.cc:58: Falling back to prediction using DMatrix due to mismatched devices. This might lead to higher memory usage and slower performance. XGBoost is running on: cuda:0, while the input data is on: cpu.
+
+ 70%|███████   | 7/10 [07:02<02:14, 44.67s/it]
+ 80%|████████  | 8/10 [2:31:16<1:32:50, 2785.27s/it]
+ 90%|█████████ | 9/10 [2:31:54<32:06, 1926.49s/it]  /home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/xgboost/core.py:729: UserWarning: [06:05:16] WARNING: /workspace/src/common/error_msg.cc:58: Falling back to prediction using DMatrix due to mismatched devices. This might lead to higher memory usage and slower performance. XGBoost is running on: cuda:0, while the input data is on: cpu.
 Potential solutions:
 - Use a data structure that matches the device ordinal in the booster.
 - Set the device for booster before call to inplace_predict.
@@ -17,7 +27,9 @@ Potential solutions:
 This warning will only be shown once.
 
   return func(**kwargs)
-100%|██████████| 10/10 [2:32:12<00:00, 1337.22s/it]100%|██████████| 10/10 [2:32:12<00:00, 913.20s/it] 
+
+100%|██████████| 10/10 [2:32:12<00:00, 1337.22s/it]
+100%|██████████| 10/10 [2:32:12<00:00, 913.20s/it] 
 Training AdaBoost...
 Model training completed for AdaBoost.
 Metrics for AdaBoost: [np.float64(0.7305004440786862), np.float64(0.7140381660854453), np.float64(0.7438662864889518), 0.963607684713412, 0.0, 1.0, 0.0, 0.963607684713412, 0.0]
@@ -55,9 +67,16 @@ Metrics for RandomForest: [np.float64(0.6865470846715659), np.float64(0.67268678
 Training XGBoost...
 Model training completed for XGBoost.
 Metrics for XGBoost: [np.float64(0.7147173748020439), np.float64(0.7012177360557317), np.float64(0.7293402644063516), 0.7643067076699613, 0.5478640473963206, 0.7724810400866738, 0.0833610096313517, 0.9783730573039405, 0.1447043320704991]
-  0%|          | 0/10 [00:00<?, ?it/s]/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+
+  0%|          | 0/10 [00:00<?, ?it/s]/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
   _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
- 10%|█         | 1/10 [02:59<26:56, 179.65s/it] 20%|██        | 2/10 [03:28<12:05, 90.71s/it]  30%|███       | 3/10 [03:31<05:57, 51.07s/it] 40%|████      | 4/10 [31:11<1:08:37, 686.26s/it] 50%|█████     | 5/10 [1:18:30<2:01:51, 1462.37s/it] 60%|██████    | 6/10 [1:19:03<1:05:04, 976.24s/it] /home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:465: ConvergenceWarning: lbfgs failed to converge (status=1):
+
+ 10%|█         | 1/10 [02:59<26:56, 179.65s/it]
+ 20%|██        | 2/10 [03:28<12:05, 90.71s/it] 
+ 30%|███       | 3/10 [03:31<05:57, 51.07s/it]
+ 40%|████      | 4/10 [31:11<1:08:37, 686.26s/it]
+ 50%|█████     | 5/10 [1:18:30<2:01:51, 1462.37s/it]
+ 60%|██████    | 6/10 [1:19:03<1:05:04, 976.24s/it] /home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:465: ConvergenceWarning: lbfgs failed to converge (status=1):
 STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
 
 Increase the number of iterations (max_iter) or scale the data as shown in:
@@ -65,7 +84,12 @@ Increase the number of iterations (max_iter) or scale the data as shown in:
 Please also refer to the documentation for alternative solver options:
     https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
   n_iter_i = _check_optimize_result(
- 70%|███████   | 7/10 [1:19:50<33:37, 672.46s/it]   80%|████████  | 8/10 [4:37:03<2:20:51, 4225.52s/it] 90%|█████████ | 9/10 [4:38:24<48:49, 2929.95s/it]  100%|██████████| 10/10 [4:38:38<00:00, 2029.80s/it]100%|██████████| 10/10 [4:38:38<00:00, 1671.88s/it]
+
+ 70%|███████   | 7/10 [1:19:50<33:37, 672.46s/it]  
+ 80%|████████  | 8/10 [4:37:03<2:20:51, 4225.52s/it]
+ 90%|█████████ | 9/10 [4:38:24<48:49, 2929.95s/it]  
+100%|██████████| 10/10 [4:38:38<00:00, 2029.80s/it]
+100%|██████████| 10/10 [4:38:38<00:00, 1671.88s/it]
 Training AdaBoost...
 Model training completed for AdaBoost.
 Metrics for AdaBoost: [np.float64(0.6948351247607027), np.float64(0.6848407810212638), np.float64(0.7037199058933803), 0.9645255607839555, 0.0, 1.0, 0.0, 0.9645255607839555, 0.0]
@@ -104,6 +128,22 @@ Metrics for RandomForest: [np.float64(0.6460407944998705), np.float64(0.63603220
 Training XGBoost...
 Model training completed for XGBoost.
 Metrics for XGBoost: [np.float64(0.6914808727676733), np.float64(0.6789793929167809), np.float64(0.7026672153896086), 0.7356891589382795, 0.5202833226014166, 0.743611604499704, 0.06945160735774454, 0.9768230462916874, 0.12254493061348297]
-  0%|          | 0/10 [00:00<?, ?it/s]/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+
+  0%|          | 0/10 [00:00<?, ?it/s]/home/mclab/miniconda3/envs/ydl/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
   _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
- 10%|█         | 1/10 [04:43<42:32, 283.57s/it] 20%|██        | 2/10 [05:20<18:29, 138.74s/it] 30%|███       | 3/10 [05:33<09:28, 81.27s/it]  40%|████      | 4/10 [32:58<1:09:52, 698.67s/it]
+
+ 10%|█         | 1/10 [04:43<42:32, 283.57s/it]
+ 20%|██        | 2/10 [05:20<18:29, 138.74s/it]
+ 30%|███       | 3/10 [05:33<09:28, 81.27s/it] 
+ 40%|████      | 4/10 [32:58<1:09:52, 698.67s/it]
+ nohup: ignoring input
+
+  0%|          | 0/10 [00:00<?, ?it/s]/home/ydl/miniconda3/envs/ehr/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+ 10%|█         | 1/10 [01:02<09:21, 62.41s/it] 20%|██        | 2/10 [01:09<03:56, 29.60s/it] 30%|███       | 3/10 [01:10<01:57, 16.81s/it]nohup: ignoring input
+数值型变量（排除one-hot编码）: ['Cystatin-C', 'Creatinine', 'Serum_Uric_acid', 'Serum_Urea', 'Uric_RBC', 'Uric_WBC', 'Uric_PH', 'Uric_specific_gravity', 'Uric_conductivity', 'Uric_epithelium', 'Uric_bacteria', 'RBC', 'RDW(SD)', 'RDW(CV)', 'HCT', 'MCHC', 'MCH', 'MCV', 'HB', 'WBC', 'Neutrophil_count', 'Neutrophil_percentage', 'Lymphocytes_count', 'Lymphocytes_percentage', 'Basophil_count', 'Basophil_percentage', 'Eosinophil_count', 'Eosinophil_percentage', 'Monocytes_count', 'Monocytes_percentage', 'platelets_count', 'AST', 'ALT', 'AST_to_ALT_ratio', 'DBIL', 'IBIL', 'TBIL', 'Globulin', 'Total_protein', 'Albumin', 'ALB_to_GLO_ratio', 'CK', 'AKP', 'GGT', 'α-HBDH', 'LDH', 'Fasting_blood_glucose', 'Cholesterol', 'Triglycerides', 'HDL', 'LDL', 'Systolic_BP', 'Diastolic_BP', 'BMI', 'Height', 'Weight', 'Waistline', 'Hips', 'Waist_to_hip_ratio', 'Age', 'eGFR', 'NLR', 'BLR', 'ELR', 'MLR', 'PLR', 'BRI', 'ABSI']
+总特征数: 73
+需要robustscaler的特征数: 68
+  0%|          | 0/10 [00:00<?, ?it/s]/home/ydl/miniconda3/envs/ehr/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+ 10%|█         | 1/10 [01:08<10:14, 68.30s/it]

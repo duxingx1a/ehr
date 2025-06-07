@@ -7,6 +7,7 @@ import ehr_models
 from sklearn.preprocessing import RobustScaler
 import numpy as np
 
+
 def train_and_save_all_models(file_path, method='default'):
     X_train, X_test, Y_train, Y_test = ehr_utils.get_train_test(file_path)
     # 定义所有模型初始化函数
@@ -36,7 +37,7 @@ def train_and_save_all_models(file_path, method='default'):
         metrics = ehr_utils.eval_model(Y_test, Y_prob, Y_pred)
         print(f"Metrics for {model_name}: {metrics}")
         # 保存模型
-        ehr_models.save_model(model, model_name, auc=metrics[0], method=method, opt='opt_log')
+        ehr_models.save_model(model, model_name, auc=metrics[0], method=method, opt='opt_no_scale')
 
 
 # 调用主函数

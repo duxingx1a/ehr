@@ -10,13 +10,19 @@ import pandas as pd
 
 def train_and_save_all_models(file_path, method='default'):
     X_train, X_test, Y_train, Y_test = ehr_utils.get_train_test(file_path)
-    robust_train=RobustScaler()
-    robust_test=RobustScaler()
-    X_train_np = robust_train.fit_transform(X_train)  # 使用RobustScaler进行特征缩放
-    X_test_np = robust_test.fit_transform(X_test)  # 使用RobustScaler进行特征缩放
-    # 将缩放后的X_train和X_test转换回DataFrame，保持原有列名和索引
-    X_train = pd.DataFrame(X_train_np, columns=X_train.columns, index=Y_train.index)
-    X_test = pd.DataFrame(X_test_np, columns=X_test.columns, index=Y_test.index)
+    num_cols = [col for col in X_train.select_dtypes(include=[np.number]).columns if X_train[col].nunique() > 3]
+    print("数值型变量（排除one-hot编码）:", num_cols)
+    print("总特征数:", len(X_train.columns))
+    print("需要robustscaler的特征数:", len(num_cols))
+    # 对num_cols进行RobustScaler标准化，其他特征保持不变，最后合并
+    X_train_scaled = X_train.copy()
+    X_test_scaled = X_test.copy()
+    robust_scaler = RobustScaler()
+    X_train_scaled[num_cols] = robust_scaler.fit_transform(X_train[num_cols])
+    X_test_scaled[num_cols] = robust_scaler.transform(X_test[num_cols])
+    X_train = X_train_scaled
+    X_test = X_test_scaled
+    
     # 定义所有模型初始化函数
     model_initializers = {
         'AdaBoost': init_adaBoost,
@@ -44,7 +50,7 @@ def train_and_save_all_models(file_path, method='default'):
         metrics = ehr_utils.eval_model(Y_test, Y_prob, Y_pred)
         print(f"Metrics for {model_name}: {metrics}")
         # 保存模型
-        ehr_models.save_model(model, model_name, auc=metrics[0], method=method, opt='opt_log')
+        ehr_models.save_model(model, model_name, auc=metrics[0], method=method, opt='default_robust')
 
 
 # 调用主函数
